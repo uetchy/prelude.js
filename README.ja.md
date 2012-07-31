@@ -1,6 +1,6 @@
 # jquery.naz
 
-Simple preloader for jQuery.
+ちょっとしたPreloader
 
 ## 必須環境
 
@@ -18,7 +18,8 @@ Simple preloader for jQuery.
 小さいサイズがお好みでしたら`jquery.naz-1.0.min.js`を代わりに追加します。
 2. `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 3. 以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
-4. 		<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
+
+ 		<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
   		<script type="text/javascript" src="/path/to/jquery.naz-1.0.js"></script>
   		<script type="text/javascript">
   		$(function(){
@@ -41,7 +42,8 @@ Simple preloader for jQuery.
     	  });
    	  	});
   		</script>
- 5. これで終わり！お疲れ様です！  
+
+ 4. これで終わり！お疲れ様です！  
  サンプルは`example/`に入っています。良かったら見てみて
  
 ### ヒント
@@ -53,6 +55,7 @@ Simple preloader for jQuery.
 
 上記のタグは特別なことをしなくてもNazが自動的に探してくれますがCSSのbackground属性はそうはいきません。  
 例えば、
+
 	/* CSS */
 	#pic {
 	  background: url(images/pic1.jpg) 0 0 no-repeat;
