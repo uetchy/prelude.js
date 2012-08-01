@@ -110,8 +110,7 @@
     }
   };
   
-  jQuery.fn.naz = function(options, callback){
-    if(typeof callback === 'undefined') callback = null;
+  jQuery.fn.naz = function(options){
     config = jQuery.extend(config, options);
     if(config.smart_naz)sniffTags();
     if(config.auto_assets)autoAssets();
