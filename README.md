@@ -18,7 +18,7 @@ Simple preloader.
 
 `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
-以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
+以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
 	<script type="text/javascript" src="/path/to/jquery.naz-1.1.js"></script>
@@ -36,7 +36,8 @@ Simple preloader.
 
 ### CSS background-imageをプリロードするには
 
-Nazは特別なことをしなくても以下のようなタグは自動的に探してプリロードクエリに追加してくれます。
+Nazは特別なことをしなくても以下のようなタグは自動的に探してプリロードクエリに追加してくれます。  
+(もし勝手に追加されたくなかったらオプションで`smart_naz: false`とセットしよう)
 
 	<img src="hoge" />
 	<audio src="hoge" />
@@ -75,7 +76,7 @@ Nazは特別なことをしなくても以下のようなタグは自動的に�
     auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
     auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
     show_text: true, /* ローディングテキストを表示します。 */
-    loadingText: ":percent %", /* :percentは進行の割合に置き換えられます。 */
+    loading_text: ":percent %", /* :percentは進行の割合に置き換えられます。 */
     animation: { // :animate用
       speed: 1000 /* アニメーションスピード(ミリ秒) */
     }
@@ -104,6 +105,10 @@ Nazは特別なことをしなくても以下のようなタグは自動的に�
 	  $("#circle").animate({transform: "rotate("+now_percent+")"});
 	});
 
+# 採用例
+
+* ADAMANT HEART - <http://0050.attri.me/> | designed by sekka.
+
 # 協力
 
 新しい機能の要望/改善があったら私の[Twitter](http://twitter.com/o_ame)にリプライで教えてください。  
@@ -114,7 +119,7 @@ Nazは特別なことをしなくても以下のようなタグは自動的に�
 
 # クレジット
 
-Maintained by oame - http://oameya.com  
+Maintained by oame - <http://oameya.com>  
 Licensed by MIT License
 
 ※サンプルピクチャは私が撮りました :)
