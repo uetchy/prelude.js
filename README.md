@@ -1,65 +1,114 @@
 # jquery.naz
 
-Simple preloader for jQuery.
+Simple preloader.
 
-## Requirements
+# 必須環境
 
 * jQuery 1.7.2+
 
-## How to use
+# 特徴
 
-1. Add `jquery.naz-1.0.js` to your project(e.g. `javascripts/`)  
-If you want to smaller size, please add `jquery.naz-1.0.min.js` to your project instead of `jquery.naz-1.0.js`.
-2. Add `jquery.naz.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
-3. Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
+* ちょっとしたJSコードを書くだけで準備完了です。長たらしいHTMLコードを書く必要はありません！
+* img, audioタグを自動的に探してくれるので、CSS background-imageの場合だけHTMLタグを修正するだけで既存のプロジェクトに完全に対応します。
 
-      <link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-  		<script type="text/javascript" src="/path/to/jquery.naz-1.0.js"></script>
-  		<script type="text/javascript">
-  		$(function(){
-    	  $("body").naz({
-      	    animate: false, /* true => Use .animate method, false => doesn't use */
-      		smart_naz: true, /* Looking for <img> or <audio> tags, preload automatically. */
-      		auto_assets: true, /* Prepare Preloader wrapper html code automatically. */
-      		interval: 20,
-    		animation: { // For :animate
-      		  speed: 1000, /* Animation speed(milli seconds) */
-      		  loadingText: "Loading..."
-   			},
-    		nonanimate: { // For :nonanimate
-      		  loadingText: ":percent %" /* :percent replaced to percentage of progress. */
-    		}
-    	  });
+# 使い方
 
-    	  $("body").bind("preloaded", function(){
-      	    // Yay! This method is called when resources has been preloaded.
-    	  });
-   	  	});
-  		</script>
+1. `jquery.naz-1.0.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.naz-1.0.min.js`を代わりに追加します。
+2. `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
+3. 以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
 
- 5. Process is complete. make it easy!
- 
-### Hint
+       <link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
+  	   <script type="text/javascript" src="/path/to/jquery.naz-1.0.js"></script>
+  	   <script type="text/javascript">
+  	   $(function(){
+         $("body").naz();
+    	 $("body").bind("preloaded", function(){
+      	   // やったー！preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
+         });
+   	   });
+  	   </script>
 
-#### Default configuration
+ 4. これで終わり！お疲れ様です！  
+ サンプルは`example/`に入っています。良かったら見てみて！
 
-  	config = {
-      animate: false,
-      interval: 20,
-      smart_naz: false,
-      auto_assets: true,
-      animation: { // For :animate
-        speed: 1000,
-        loadingText: "Loading..."
-      },
-      nonanimate: { // For :nonanimate
-        loadingText: ":percent %"
-      }
+### CSS background-imageをプリロードするには
+
+Nazは特別なことをしなくても以下のようなタグは自動的に探してプリロードクエリに追加してくれます。
+
+	<img src="hoge" />
+	<audio src="hoge" />
+
+しかし外部ファイルにも分散することのあるCSS background-image属性はそうはいきません。例えば、  
+
+	/* CSS */
+	#pic {
+	  background: url(images/pic1.jpg) 0 0 no-repeat;
+	}
+	
+	/* HTML */
+	<div id="pic"></div>
+
+というコードをNazに拾ってもらうには
+
+	/* CSS */
+	#pic {
+	  background: url(images/pic1.jpg) 0 0 no-repeat;
+	  /* background: 0 0 no-repeat; でもいいよ */
+	}
+	
+	/* HTML */
+	<div id="pic" data-naz-src="images/pic1.jpg"></div>
+
+と書き換えなくてはなりません。逆に言えば、それさえ置き換えれば他は何も弄らなくて良いということです！
+
+## オプション
+
+`$("body").naz()`の引数で指定出来るオプションは以下の通りです。
+オプションが設定されなかった場合は自動的にこの設定で初期化されます。
+    
+    animate: false, /* true => .animateを使います, false => 使いません */
+    interval: 20, /* タイマーの更新頻度。特に弄る必要はなし */
+    smart_naz: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
+    auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
+    auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
+    show_text: true, /* ローディングテキストを表示します。 */
+    loadingText: ":percent %", /* :percentは進行の割合に置き換えられます。 */
+    animation: { // :animate用
+      speed: 1000 /* アニメーションスピード(ミリ秒) */
     }
 
-## Credits
+## イベントハンドラ
+
+### on:naz_preloaded
+
+プリロードが全て完了した時に呼ばれます。プリロード完了時にLoading画面は自動でフェードアウトするので、このタイミングでコンテンツを可視化すると良いでしょう。
+
+	$("body").on("naz_preloaded", function(){
+      $("#container").css("display", "block");
+      $("#container").animate({opacity: 1}, 800);
+      $("#player").trigger("play");
+    });
+
+### on:naz_progress
+
+進捗が変化した際に呼ばれます。カスタムアニメーションを定義したい場合に使うと良いでしょう。
+
+	$("body").on("naz_progress", function(now_percent){
+	  $("#circle").animate({transform: "rotate("+now_percent+")"});
+	});
+
+# 協力
+
+新しい機能の要望/改善があったら私の[Twitter](http://twitter.com/o_ame)にリプライで教えてください。  
+もしくは匿名で[意見ボックス](http://tracht.ameapp.com/w/5)に書き込んでみてください。  
+必ず採用するとは限りませんが最大限考慮させて頂きます。
+
+プルリクエストを歓迎します！
+
+# クレジット
 
 Maintained by oame - http://oameya.com  
 Licensed by MIT License
 
-Sample picture was shot by me ;)
+※サンプルピクチャは私が撮りました :)
