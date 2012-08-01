@@ -9,19 +9,19 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/common.css" media="all" />
   <link rel="stylesheet" type="text/css" href="../jquery.naz.css" media="all" />
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="../jquery.naz-1.0.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.js"></script>
+  <script type="text/javascript" src="../jquery.naz-1.1.js"></script>
   <script type="text/javascript">
   $(function(){
-    $("body").naz({
-      animate: false,
-      smart_naz: true
-    });
+    $("body").naz({animate: false, show_text: false});
 
-    $("body").bind("preloaded", function(){
+    $("body").bind("naz_preloaded", function(event){
       $("#container").css("display", "block");
       $("#container").animate({opacity: 1}, 800);
-      $("#player").trigger("play");
+    });
+
+    $("body").bind("naz_progress", function(event){
+      
     });
   });
   </script>
