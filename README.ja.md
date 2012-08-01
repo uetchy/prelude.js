@@ -26,7 +26,7 @@
     	  $("body").naz({
       	    animate: false, /* true => .animateを使います, false => 使いません */
       		smart_naz: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
-      		auto_assets: true /* 自動的にプリローダのためのHTMLコードが用意されます。 */
+      		auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
       		interval: 20,
     		animation: { // :animate用
       		  speed: 1000, /* アニメーションスピード(ミリ秒) */

@@ -19,7 +19,7 @@ If you want to smaller size, please add `jquery.naz-1.0.min.js` to your project 
     	  $("body").naz({
       	    animate: false, /* true => Use .animate method, false => doesn't use */
       		smart_naz: true, /* Looking for <img> or <audio> tags, preload automatically. */
-      		auto_assets: true /* Prepare Preloader wrapper html code automatically. */
+      		auto_assets: true, /* Prepare Preloader wrapper html code automatically. */
       		interval: 20,
     		animation: { // For :animate
       		  speed: 1000, /* Animation speed(milli seconds) */
