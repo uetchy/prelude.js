@@ -159,7 +159,7 @@
               animated = false;
             });
 
-            $(config.top_node).trigger("naz_progress");
+            $(config.top_node).trigger("naz_progress", [now_perc, finished_count, total_count]);
           }
         }
       },
@@ -179,7 +179,7 @@
             }
             $(config.html.indicator).css("width", displayed_perc + "%");
 
-            $(config.top_node).trigger("naz_progress", [now_perc, finished_count]);
+            $(config.top_node).trigger("naz_progress", [now_perc, finished_count, total_count]);
           }
         }
       },
