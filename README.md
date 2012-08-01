@@ -13,24 +13,26 @@ Simple preloader.
 
 # 使い方
 
-1. `jquery.naz-1.1.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+`jquery.naz-1.1.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
 小さいサイズがお好みでしたら`jquery.naz-1.1.min.js`を代わりに追加します。
-2. `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
-3. 以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
 
-        <link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-  	    <script type="text/javascript" src="/path/to/jquery.naz-1.1.js"></script>
-  	    <script type="text/javascript">
-  	    $(function(){
-          $("body").naz();
-    	  $("body").on("naz_preloaded", function(){
-      	    // やったー！naz_preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
-          });
-   	    });
-  	    </script>
+`jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
-4. これで終わり！お疲れ様です！  
-サンプルは`example/`に入っています。良かったら見てみて！
+以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
+
+	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
+	<script type="text/javascript" src="/path/to/jquery.naz-1.1.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	  $("body").naz();
+	  $("body").on("naz_preloaded", function(){
+	    // やったー！naz_preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
+	  });
+	});
+	</script>
+
+これで一番シンプルなセットアップが完了しました！
+他のサンプルは`example/`に入っています。良かったら見てみて！
 
 ### CSS background-imageをプリロードするには
 
