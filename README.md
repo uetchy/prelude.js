@@ -12,7 +12,8 @@ Simple preloader for jQuery.
 If you want to smaller size, please add `jquery.naz-1.0.min.js` to your project instead of `jquery.naz-1.0.js`.
 2. Add `jquery.naz.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
 3. Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
-4. 		<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
+
+      <link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
   		<script type="text/javascript" src="/path/to/jquery.naz-1.0.js"></script>
   		<script type="text/javascript">
   		$(function(){
@@ -35,6 +36,7 @@ If you want to smaller size, please add `jquery.naz-1.0.min.js` to your project 
     	  });
    	  	});
   		</script>
+
  5. Process is complete. make it easy!
  
 ### Hint
