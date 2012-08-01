@@ -13,18 +13,18 @@ Simple preloader.
 
 # 使い方
 
-1. `jquery.naz-1.0.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.naz-1.0.min.js`を代わりに追加します。
+1. `jquery.naz-1.1.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.naz-1.1.min.js`を代わりに追加します。
 2. `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 3. 以下のHTMLタグとJSコードを&lt;header&gt;タグ内に記述してください(もちろんjQueryはロードしてから:o)。
 
         <link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-  	    <script type="text/javascript" src="/path/to/jquery.naz-1.0.js"></script>
+  	    <script type="text/javascript" src="/path/to/jquery.naz-1.1.js"></script>
   	    <script type="text/javascript">
   	    $(function(){
           $("body").naz();
-    	  $("body").bind("preloaded", function(){
-      	    // やったー！preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
+    	  $("body").on("naz_preloaded", function(){
+      	    // やったー！naz_preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
           });
    	    });
   	    </script>
