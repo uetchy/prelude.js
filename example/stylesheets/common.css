@@ -10,7 +10,7 @@ body {
 }
 
 #container {
-  width: 960px;
+  width: 800px;
   height: 100%;
   margin: 0 auto;
   padding: 0;
@@ -19,12 +19,13 @@ body {
   display: none;
 }
 
-#container img {
-  width: 960px;
+#pic {
+  width: 800px;
+  height: 533px;
+  background: 0 0 no-repeat;
 }
 
-#pic {
-  width: 960px;
-  height: 1000px;
-  background: 0 0 no-repeat;
+#album {
+  opacity: 0;
+  display: none;
 }

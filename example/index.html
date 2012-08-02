@@ -3,25 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=800px, initial-scale=1.0" />
   <meta name="author" content="oame" />
 
   <link rel="stylesheet" type="text/css" href="stylesheets/common.css" media="all" />
   <link rel="stylesheet" type="text/css" href="../jquery.naz.css" media="all" />
 
   <script type="text/javascript" src="javascripts/jquery.js"></script>
-  <script type="text/javascript" src="../jquery.naz-1.1.js"></script>
+  <script type="text/javascript" src="../jquery.naz-1.2.js"></script>
   <script type="text/javascript">
   $(function(){
     $("body").naz({animate: true, show_text: false});
 
-    $("body").bind("naz_preloaded", function(event){
+    $("body").on("naz_preloaded", function(event){
       $("#container").css("display", "block");
       $("#container").animate({opacity: 1}, 800);
-    });
-
-    $("body").bind("naz_progress", function(event){
-      
     });
   });
   </script>
