@@ -14,15 +14,15 @@ jquery.naz はシンプルで先進的なプリローダーです。
 
 # 使い方
 
-`jquery.naz-1.1.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.naz-1.1.min.js`を代わりに追加します。
+`jquery.naz-1.2.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.naz-1.2.min.js`を代わりに追加します。
 
 `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.naz-1.1.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.naz-1.2.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").naz();
