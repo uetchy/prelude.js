@@ -1,3 +1,5 @@
+日本語ドキュメントは[こちら](https://github.com/oame/jquery.naz/blob/master/README.ja.md)
+
 # jquery.naz
 
 jquery.naz is a simple and advanced preloader plugin for jQuery.
