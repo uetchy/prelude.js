@@ -4,42 +4,37 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>jquery.naz by oame</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
-      <header>
-        <h1>jquery.naz</h1>
-        <p>Simple preloader</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/oame/jquery.naz" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/oame/jquery.naz/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/oame/jquery.naz/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
     <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
+      <header>
+        <h1 class="header">jquery.naz</h1>
+        <p class="header">Simple preloader</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/oame/jquery.naz/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/oame/jquery.naz/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/oame/jquery.naz">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/oame">oame</a></p>
+
+
+      </header>
       <section>
-        <p>jquery.naz is a simple and advanced preloader plugin for jQuery.
+        <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.naz/blob/master/README.ja.md">こちら</a></p>
+
+<h1>jquery.naz</h1>
+
+<p>jquery.naz is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.</p>
 
 <h1>Requirements</h1>
@@ -53,15 +48,15 @@ Web designers can focus on just design without think about unnecessary things.</
 <li>This is compatible with existing project but you need to modify the HTML tag only if it has a CSS background-image.</li>
 </ul><h1>How to Use</h1>
 
-<p>Add <code>jquery.naz-1.2.js</code> to your project(e.g. <code>javascripts/</code>)<br>
-If you want to smaller size, please add <code>jquery.naz-1.2.min.js</code> to your project instead of <code>jquery.naz-1.2.js</code>.</p>
+<p>Add <code>jquery.naz-1.3.js</code> to your project(e.g. <code>javascripts/</code>)<br>
+If you want to smaller size, please add <code>jquery.naz-1.3.min.js</code> to your project instead of <code>jquery.naz-1.3.js</code>.</p>
 
 <p>Add <code>jquery.naz.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
 
-<p>Add add following codes to inner of &gt;header&lt;(jQuery is required :o).</p>
+<p>Add add following codes to inner of &lt;header&gt;(jQuery is required :o).</p>
 
 <pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/&gt;
-&lt;script type="text/javascript" src="/path/to/jquery.naz-1.2.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/path/to/jquery.naz-1.3.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
 $(function(){
   $("body").naz();
@@ -115,13 +110,14 @@ Other samples is contained in the <code>example/</code>. Take a look if you like
 If the option is not set will be initialized with this setting automatically.</p>
 
 <pre><code>animate: false, /* true =&gt; Using .animate, false =&gt; Doesn't use */
-interval: 20, /* The update frequency of the timer. */
 smart_naz: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
 auto_assets: true, /* Preparing HTML for preloader automatically. */
 auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
+hide_speed: 1000, /* Fade-out speed */
 show_text: true, /* Show loading text. */
 loading_text: ":percent %", /* :percent is replaced by the rate of progression. */
-animation: { // For :animate
+animation: {
+  interval: 20, /* The update frequency of the timer. */
   speed: 1000 /* Animation speed(milli seconds) */
 }
 </code></pre>
@@ -156,6 +152,7 @@ animation: { // For :animate
 
 <ul>
 <li>ADAMANT HEART - <a href="http://0050.attri.me/">http://0050.attri.me/</a> | Designed by sekka.</li>
+<li>Lost World -ロストワールド- - <a href="http://8lemo.com/products/lost/">http://8lemo.com/products/lost/</a> | Designed by narugami.</li>
 </ul><h1>Contribution</h1>
 
 <p>If you have any improvement / new feature requests, please tell us in reply to my <a href="http://twitter.com/o_ame">Twitter</a> or writing to the <a href="http://tracht.ameapp.com/w/5">box for opinions</a> anonymously.</p>
@@ -170,11 +167,10 @@ Licensed by MIT License</p>
 <p>※Sample pictures shot by me :)</p>
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/oame">oame</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-    
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
