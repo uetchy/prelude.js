@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+}
+
+#container {
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: #120000;
+  opacity: 0;
+  display: none;
+}
+
+#pic {
+  width: 800px;
+  height: 533px;
+  background: 0 0 no-repeat;
+}
+
+#album {
+  opacity: 0;
+  display: none;
+}
+
+/* Cutom */
+
+#naz-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  background: #d23939;
+}
+
+#naz-text-layer {
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  margin: 20px 0 0 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+}
+
+#naz-text {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 15px;
+  color: #efefef;
+}
+
+#naz-slider {
+  width: 500px;
+  height: 7px;
+  top: 50%;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 1px;
+  display: block;
+  position: relative;
+  background: #d23939;
+  border: 2px solid #fff;
+  padding: 1px;
+}
+
+#naz-slider span {
+  display: block;
+  width: 0px;
+  height: 5px;
+  margin: 1px;
+  background: #efefef;
+}

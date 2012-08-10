@@ -16,15 +16,15 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Add `jquery.naz-1.2.js` to your project(e.g. `javascripts/`)  
-If you want to smaller size, please add `jquery.naz-1.2.min.js` to your project instead of `jquery.naz-1.2.js`.
+Add `jquery.naz-1.3.js` to your project(e.g. `javascripts/`)  
+If you want to smaller size, please add `jquery.naz-1.3.min.js` to your project instead of `jquery.naz-1.3.js`.
 
 Add `jquery.naz.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
 
-Add add following codes to inner of &gt;header&lt;(jQuery is required :o).
+Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.naz-1.2.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.naz-1.3.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").naz();
@@ -74,13 +74,14 @@ Options can be specified with the argument of naz is as following.
 If the option is not set will be initialized with this setting automatically.
     
     animate: false, /* true => Using .animate, false => Doesn't use */
-    interval: 20, /* The update frequency of the timer. */
     smart_naz: true, /* Locate <img> and <audio> and add automatically to preload query. */
     auto_assets: true, /* Preparing HTML for preloader automatically. */
     auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
+    hide_speed: 1000, /* Fade-out speed */
     show_text: true, /* Show loading text. */
     loading_text: ":percent %", /* :percent is replaced by the rate of progression. */
-    animation: { // For :animate
+    animation: {
+      interval: 20, /* The update frequency of the timer. */
       speed: 1000 /* Animation speed(milli seconds) */
     }
 
@@ -111,6 +112,7 @@ Called when progress has changed(Use cse: implement custom animation).
 # Adoption case
 
 * ADAMANT HEART - <http://0050.attri.me/> | Designed by sekka.
+* Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
 
 # Contribution
 

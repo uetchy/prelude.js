@@ -14,15 +14,15 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 # 使い方
 
-`jquery.naz-1.2.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.naz-1.2.min.js`を代わりに追加します。
+`jquery.naz-1.3.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.naz-1.3.min.js`を代わりに追加します。
 
 `jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.naz-1.2.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.naz-1.3.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").naz();
@@ -72,13 +72,14 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 オプションが設定されなかった場合は自動的にこの設定で初期化されます。
     
     animate: false, /* true => .animateを使います, false => 使いません */
-    interval: 20, /* タイマーの更新頻度。特に弄る必要はなし */
     smart_naz: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
     auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
     auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
+    hide_speed: 1000, /* Wrapperがフェードアウトに要する時間(秒)です。 */
     show_text: true, /* ローディングテキストを表示します。 */
     loading_text: ":percent %", /* :percentは進行の割合に置き換えられます。 */
-    animation: { // :animate用
+    animation: {
+      interval: 20, /* タイマーの更新頻度。滑らかさを調整出来ます（推奨：20） */
       speed: 1000 /* アニメーションスピード(ミリ秒) */
     }
 
@@ -110,6 +111,7 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 # 採用例
 
 * ADAMANT HEART - <http://0050.attri.me/> | Designed by sekka.
+* Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
 
 # 協力
 
