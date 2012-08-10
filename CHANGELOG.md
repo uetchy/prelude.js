@@ -1,3 +1,11 @@
+1.3
+----
+
+* IE6 and IE7 are supported.
+* When switch to animate mode, this version can get correct progress.
+* New option => hide_speed
+* Added new sample page!
+
 1.2
 ----
 

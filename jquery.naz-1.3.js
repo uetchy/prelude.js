@@ -4,8 +4,8 @@
  *
  * Examples and document at http://oame.github.com/jquery.naz
  *
- * Copyright(C) 2012 oame - http://oameya.com
- * version: 1.2
+ * Copyright(C) 2012 o_ame - http://oameya.com
+ * version: 1.3
  * require: jQuery 1.7.2+
  * license: MIT License
  */
@@ -47,10 +47,17 @@
             callback(total, total - _objects.length);
           });
         }else{
-          $("<img/>").attr("src", src).load(function(){
+          var img = $("<img/>").attr("src", src);
+          var ua = $.browser;
+          if(ua.msie && img.width() !=0) {
             _objects.remove(src);
             callback(total, total - _objects.length);
-          });
+          }else{
+            img.load(function(){
+              _objects.remove(src);
+              callback(total, total - _objects.length);
+            });
+          }
         }
       });
     },
@@ -97,13 +104,14 @@
   /* Default configuration */
   config = {
     animate: false,
-    interval: 20,
     smart_naz: true,
     auto_assets: true,
     auto_hide: true,
+    hide_speed: 1000,
     show_text: true,
     loading_text: ":percent %",
     animation: { // For :animate
+      interval: 20,
       speed: 1000
     }
   };
@@ -115,7 +123,8 @@
     config.top_node = $(this).selector;
     config.html = {};
     config.html.wrapper = config.top_node + " > #naz-wrapper";
-    config.html.indicator = config.html.wrapper + " > #naz-slider > span";
+    config.html.slider = config.html.wrapper + " > #naz-slider";
+    config.html.indicator = config.html.slider + " > span";
     config.html.text_node = config.html.wrapper + " > #naz-text-layer > #naz-text";
     config.html.insersion = ":percent";
 
@@ -139,26 +148,29 @@
           $naz.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
-              $(config.html.wrapper).fadeOut("slow", function(){
+              $(config.html.wrapper).fadeOut(config.hide_speed, function(){
                 $(config.top_node).trigger("naz_preloaded");
               });
             }else{
               $(config.top_node).trigger("naz_preloaded");
             }
         }else{
+          var top_x = parseInt($(config.html.slider).css("width"));
+          var now_x = parseInt($(config.html.indicator).css("width"));
+          displayed_perc = Math.ceil(now_x / top_x * 100);
+          $(config.top_node).trigger("naz_progress", [displayed_perc, finished_count, total_count]);
+          if(config.show_text){
+            $(config.html.text_node).html(config.loading_text.replace(config.html.insersion, displayed_perc));
+          }
+
           if(displayed_count < finished_count){
             animated = true;
-            displayed_perc = now_perc;
             displayed_count += 1;
-            if(config.show_text){
-              $(config.html.text_node).html(config.loading_text.replace(config.html.insersion, displayed_perc));
-            }
+            
             $(config.html.indicator).stop();
             $(config.html.indicator).animate({width: (displayed_count / total_count)*100 + "%"}, config.speed, function(){
               animated = false;
             });
-
-            $(config.top_node).trigger("naz_progress", [displayed_perc, finished_count, total_count]);
           }
         }
       },
@@ -171,7 +183,7 @@
           $naz.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
-              $(config.html.wrapper).fadeOut("slow", function(){
+              $(config.html.wrapper).fadeOut(config.hide_speed, function(){
                 $(config.top_node).trigger("naz_preloaded");
               });
             }else{
@@ -189,7 +201,7 @@
           }
         }
       },
-      config.interval);
+      config.animation.interval);
     }
   }
 })(jQuery);
