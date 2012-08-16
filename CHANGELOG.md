@@ -1,3 +1,9 @@
+1.4
+----
+
+* Rename "jquery.naz" to "jquery.precondition".
+* Use animation by default.
+
 1.3
 ----
 

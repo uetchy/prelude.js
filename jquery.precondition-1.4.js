@@ -1,11 +1,11 @@
 /*
- * jquery.naz - jQuery Plugin
- * Simple preloader
+ * jquery.precondition - jQuery Plugin
+ * Simple preloader plug-in
  *
- * Examples and document at http://oame.github.com/jquery.naz
+ * Examples and document at http://oame.github.com/jquery.precondition
  *
  * Copyright(C) 2012 o_ame - http://oameya.com
- * version: 1.3
+ * version: 1.4
  * require: jQuery 1.7.2+
  * license: MIT License
  */
@@ -13,15 +13,15 @@
 (function($, undefined){
   Array.prototype.remove = function(element){
     for (var i = 0; i < this.length; i++){
-      if($(this[i]).data("naz-src") == element)this.splice(i, 1);
+      if($(this[i]).data("preload") == element)this.splice(i, 1);
     }
   };
 
-  $naz = {
+  $precondition = {
     collect_objects: function(node){
       var _objects = [];
       $(node + " *").each(function(){
-        if(typeof $(this).data("naz-src") !== "undefined"){
+        if(typeof $(this).data("preload") !== "undefined"){
           _objects.push(this);
         }
       });
@@ -29,17 +29,17 @@
     },
     sniff_tags: function(node){
       $(node + " img,audio").each(function(){
-        if(typeof $(this).data("naz-src") !== "undefined"){
+        if(typeof $(this).data("preload") !== "undefined"){
 
         }else if(typeof $(this).attr("src") !== "undefined"){
-          $(this).attr("data-naz-src", $(this).attr("src"));
+          $(this).attr("data-preload", $(this).attr("src"));
         }
       });
     },
     preload_objects: function(_objects, callback) {
       var total = _objects.length;
       $(_objects).each(function(){
-        var src = $(this).data("naz-src");
+        var src = $(this).data("preload");
         if(this.tagName == "AUDIO"){
           var audio = $("<audio/>").attr("src", src).load();
           audio.on('canplay canplaythrough', function(){
@@ -65,23 +65,23 @@
       $(_objects).each(function(){
         switch(this.tagName){
           case "IMG":
-          $(this).attr("src", $(this).data("naz-src"));
+          $(this).attr("src", $(this).data("preload"));
           break;
           case "AUDIO":
-          $(this).attr("src", $(this).data("naz-src"));
+          $(this).attr("src", $(this).data("preload"));
           break;
           default:
-          $(this).css("background-image", "url("+$(this).data("naz-src")+")");
+          $(this).css("background-image", "url("+$(this).data("preload")+")");
         }
       });
     },
     auto_assets: function(node){
-      var wrapper = $("<div/>").attr("id", "naz-wrapper");
-      var slider = $("<div/>").attr("id", "naz-slider");
+      var wrapper = $("<div/>").attr("id", "precondition-wrapper");
+      var slider = $("<div/>").attr("id", "precondition-slider");
       slider.append($("<span/>"));
       if(config.show_text){
-        var text_layer = $("<div/>").attr("id", "naz-text-layer");
-        text_layer.append($("<p/>").attr("id", "naz-text"));
+        var text_layer = $("<div/>").attr("id", "precondition-text-layer");
+        text_layer.append($("<p/>").attr("id", "precondition-text"));
         wrapper.append(text_layer);
       }
       wrapper.append(slider);
@@ -103,8 +103,8 @@
 
   /* Default configuration */
   config = {
-    animate: false,
-    smart_naz: true,
+    animate: true,
+    smart_precondition: true,
     auto_assets: true,
     auto_hide: true,
     hide_speed: 1000,
@@ -116,24 +116,24 @@
     }
   };
 
-  $.fn.naz = function(options){
+  $.fn.precondition = function(options){
     /* Configure options */
     if(typeof options === "undefined")options = {};
     config = jQuery.extend(config, options);
     config.top_node = $(this).selector;
     config.html = {};
-    config.html.wrapper = config.top_node + " > #naz-wrapper";
-    config.html.slider = config.html.wrapper + " > #naz-slider";
+    config.html.wrapper = config.top_node + " > #precondition-wrapper";
+    config.html.slider = config.html.wrapper + " > #precondition-slider";
     config.html.indicator = config.html.slider + " > span";
-    config.html.text_node = config.html.wrapper + " > #naz-text-layer > #naz-text";
+    config.html.text_node = config.html.wrapper + " > #precondition-text-layer > #precondition-text";
     config.html.insersion = ":percent";
 
-    if(config.smart_naz)$naz.sniff_tags(config.top_node);
-    if(config.auto_assets)$naz.auto_assets(config.top_node);
+    if(config.smart_precondition)$precondition.sniff_tags(config.top_node);
+    if(config.auto_assets)$precondition.auto_assets(config.top_node);
 
-    objects = $naz.collect_objects(config.top_node);
+    objects = $precondition.collect_objects(config.top_node);
     total_count = objects.length;
-    $naz.preload_objects($.extend(true, [], objects), function(_total, _loaded){
+    $precondition.preload_objects($.extend(true, [], objects), function(_total, _loaded){
       /* Called when finished loading object */
       now_perc = Math.ceil(100 * _loaded / _total);
       finished_count += 1;
@@ -145,20 +145,20 @@
         if((total_count <= displayed_count) && (animated == false)){
           /* 読み込み終わり */
           window.clearInterval(timer);
-          $naz.replace_objects_to_appear(objects);
+          $precondition.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
               $(config.html.wrapper).fadeOut(config.hide_speed, function(){
-                $(config.top_node).trigger("naz_preloaded");
+                $(config.top_node).trigger("preloaded");
               });
             }else{
-              $(config.top_node).trigger("naz_preloaded");
+              $(config.top_node).trigger("preloaded");
             }
         }else{
           var top_x = parseInt($(config.html.slider).css("width"));
           var now_x = parseInt($(config.html.indicator).css("width"));
           displayed_perc = Math.ceil(now_x / top_x * 100);
-          $(config.top_node).trigger("naz_progress", [displayed_perc, finished_count, total_count]);
+          $(config.top_node).trigger("preload_progress", [displayed_perc, finished_count, total_count]);
           if(config.show_text){
             $(config.html.text_node).html(config.loading_text.replace(config.html.insersion, displayed_perc));
           }
@@ -180,14 +180,14 @@
         if(displayed_perc >= 100){
           /* 読み込み終わり */
           window.clearInterval(timer);
-          $naz.replace_objects_to_appear(objects);
+          $precondition.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
               $(config.html.wrapper).fadeOut(config.hide_speed, function(){
-                $(config.top_node).trigger("naz_preloaded");
+                $(config.top_node).trigger("preloaded");
               });
             }else{
-              $(config.top_node).trigger("naz_preloaded");
+              $(config.top_node).trigger("preloaded");
             }
         }else{
           if (displayed_perc < now_perc){
@@ -197,7 +197,7 @@
             }
             $(config.html.indicator).css("width", displayed_perc + "%");
 
-            $(config.top_node).trigger("naz_progress", [displayed_perc, finished_count, total_count]);
+            $(config.top_node).trigger("preload_progress", [displayed_perc, finished_count, total_count]);
           }
         }
       },
