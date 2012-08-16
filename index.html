@@ -1,40 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jquery.naz by oame</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <title>jquery.precondition by oame</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">jquery.naz</h1>
-        <p class="header">Simple preloader</p>
+    <div id="container">
+      <div class="inner">
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/oame/jquery.naz/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/oame/jquery.naz/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/oame/jquery.naz">View On GitHub</a></li>
-        </ul>
+        <header>
+          <h1>jquery.precondition</h1>
+          <h2>Simple preloader</h2>
+        </header>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/oame">oame</a></p>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/oame/jquery.precondition/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/oame/jquery.precondition/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/oame/jquery.precondition" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
+        <hr>
 
-      </header>
-      <section>
-        <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.naz/blob/master/README.ja.md">こちら</a></p>
+        <section id="main_content">
+          <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.precondition/blob/master/README.ja.md">こちら</a></p>
 
-<h1>jquery.naz</h1>
+<h1>jquery.precondition (also known as "jquery.naz")</h1>
 
-<p>jquery.naz is a simple and advanced preloader plugin for jQuery.
+<p>jquery.precondition is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.</p>
 
 <h1>Requirements</h1>
@@ -48,20 +49,20 @@ Web designers can focus on just design without think about unnecessary things.</
 <li>This is compatible with existing project but you need to modify the HTML tag only if it has a CSS background-image.</li>
 </ul><h1>How to Use</h1>
 
-<p>Add <code>jquery.naz-1.3.js</code> to your project(e.g. <code>javascripts/</code>)<br>
-If you want to smaller size, please add <code>jquery.naz-1.3.min.js</code> to your project instead of <code>jquery.naz-1.3.js</code>.</p>
+<p>Add <code>jquery.precondition-1.4.js</code> to your project(e.g. <code>javascripts/</code>)<br>
+If you want to smaller size, please add <code>jquery.precondition-1.4.min.js</code> to your project instead of <code>jquery.precondition-1.4.js</code>.</p>
 
-<p>Add <code>jquery.naz.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
+<p>Add <code>jquery.precondition.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
 
 <p>Add add following codes to inner of &lt;header&gt;(jQuery is required :o).</p>
 
-<pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/&gt;
-&lt;script type="text/javascript" src="/path/to/jquery.naz-1.3.js"&gt;&lt;/script&gt;
+<pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.precondition.css" media="all"/&gt;
+&lt;script type="text/javascript" src="/path/to/jquery.precondition-1.4.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
 $(function(){
-  $("body").naz();
-  $("body").on("naz_preloaded", function(){
-    // Yay! "naz_preloaded" is called when plugin has complete preloaded all of resources!
+  $("body").precondition();
+  $("body").on("preloaded", function(){
+    // Yay! "preloaded" is called when plugin has complete preloaded all of resources!
   });
 });
 &lt;/script&gt;
@@ -72,8 +73,8 @@ Other samples is contained in the <code>example/</code>. Take a look if you like
 
 <h3>How to preload CSS background-image</h3>
 
-<p>Naz will automatically preloaded with a tag without special action.
-(if you not want to be added automatically, you should set <code>smart_naz: false</code> to option)</p>
+<p>Precondition will automatically preloaded with a tag without special action.
+(if you not want to be added automatically, you should set <code>smart_precondition: false</code> to option)</p>
 
 <pre><code>&lt;img src="hoge" /&gt;
 &lt;audio src="hoge" /&gt;
@@ -95,22 +96,22 @@ Other samples is contained in the <code>example/</code>. Take a look if you like
 <pre><code>/* CSS */
 #pic {
   background: url(images/pic1.jpg) 0 0 no-repeat;
-  /* background: 0 0 no-repeat; でもいいよ */
+  /* background: 0 0 no-repeat; */
 }
 
 /* HTML */
-&lt;div id="pic" data-naz-src="images/pic1.jpg"&gt;&lt;/div&gt;
+&lt;div id="pic" data-preload="images/pic1.jpg"&gt;&lt;/div&gt;
 </code></pre>
 
 <p>You should rewrite as described above.</p>
 
 <h2>Configurations</h2>
 
-<p>Options can be specified with the argument of naz is as following.
+<p>Options can be specified with the argument of Precondition is as following.
 If the option is not set will be initialized with this setting automatically.</p>
 
-<pre><code>animate: false, /* true =&gt; Using .animate, false =&gt; Doesn't use */
-smart_naz: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
+<pre><code>animate: true, /* true =&gt; Using .animate, false =&gt; Doesn't use */
+smart_precondition: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
 auto_assets: true, /* Preparing HTML for preloader automatically. */
 auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
 hide_speed: 1000, /* Fade-out speed */
@@ -124,22 +125,22 @@ animation: {
 
 <h2>Event Handler</h2>
 
-<h3>on naz_preloaded</h3>
+<h3>on preloaded</h3>
 
 <p>Called when the preload is complete. it's a good idea to visualize the content at this timing.</p>
 
-<pre><code>$("body").on("naz_preloaded", function(event){
+<pre><code>$("body").on("preloaded", function(event){
   $("#container").css("display", "block");
   $("#container").animate({opacity: 1}, 800);
   $("#player").trigger("play");
 });
 </code></pre>
 
-<h3>on naz_progress</h3>
+<h3>on preload_progress</h3>
 
 <p>Called when progress has changed(Use cse: implement custom animation).</p>
 
-<pre><code>$("body").on("naz_progress", function(event, percent, finished_count, total_count){
+<pre><code>$("body").on("preload_progress", function(event, percent, finished_count, total_count){
   /* percent =&gt; Current progress(%)
    * finished_count =&gt; Count of loaded resources.
    * total_count =&gt; Count of resources in remining query.
@@ -161,16 +162,19 @@ animation: {
 
 <h1>Credits</h1>
 
-<p>Maintained by oame - <a href="http://oameya.com">http://oameya.com</a><br>
+<p>Maintained by o_ame - <a href="http://oameya.com">http://oameya.com</a><br>
 Licensed by MIT License</p>
 
 <p>※Sample pictures shot by me :)</p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
+        </section>
+
+        <footer>
+          jquery.precondition is maintained by <a href="https://github.com/oame">oame</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
   </body>
 </html>
