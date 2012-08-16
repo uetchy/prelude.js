@@ -1,6 +1,6 @@
-# jquery.naz
+# jQuery.precondition (旧名: jquery.naz)
 
-jquery.naz はシンプルなプリローダープラグインです。  
+jQuery.precondition はシンプルなプリローダープラグインです。  
 Webデザイナーがデザインだけに集中出来るよう設計されています。
 
 # 必須環境
@@ -14,20 +14,20 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 # 使い方
 
-`jquery.naz-1.3.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.naz-1.3.min.js`を代わりに追加します。
+`jquery.precondition-1.4.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.precondition-1.4.min.js`を代わりに追加します。
 
-`jquery.naz.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
+`jquery.precondition.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
-	<link rel="stylesheet" type="text/css" href="/path/to/jquery.naz.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.naz-1.3.js"></script>
+	<link rel="stylesheet" type="text/css" href="/path/to/jquery.precondition.css" media="all"/>
+	<script type="text/javascript" src="/path/to/jquery.precondition-1.4.js"></script>
 	<script type="text/javascript">
 	$(function(){
-	  $("body").naz();
-	  $("body").on("naz_preloaded", function(){
-	    // やったー！naz_preloadedイベントが呼ばれたということはNazが全てのリソースをプリロードしたということです！
+	  $("body").precondition();
+	  $("body").on("preloaded", function(){
+	    // やったー！preloadedイベントが呼ばれたということはPreconditionが全てのリソースをプリロードしたということです！
 	  });
 	});
 	</script>
@@ -37,8 +37,8 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 ### CSS background-imageをプリロードするには
 
-Nazは特別なこと無しに以下のようなタグはプリロードしてくれます。  
-(もし勝手に追加されたくなかったらオプションで`smart_naz: false`とセットしよう)
+Preconditionは特別なこと無しに以下のようなタグはプリロードしてくれます。  
+(もし勝手に追加されたくなかったらオプションで`smart_precondition: false`とセットしよう)
 
 	<img src="hoge" />
 	<audio src="hoge" />
@@ -53,7 +53,7 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 	/* HTML */
 	<div id="pic"></div>
 
-というコードをNazに拾ってもらうには
+というコードをPreconditionに拾ってもらうには
 
 	/* CSS */
 	#pic {
@@ -62,17 +62,17 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 	}
 	
 	/* HTML */
-	<div id="pic" data-naz-src="images/pic1.jpg"></div>
+	<div id="pic" data-preload="images/pic1.jpg"></div>
 
 と書き換えなくてはなりません。逆に言えば、それさえ置き換えれば他は何も弄らなくて良いということです！
 
 ## オプション
 
-`$("body").naz()`の引数で指定出来るオプションは以下の通りです。
+`$(element).precondition()`の引数で指定出来るオプションは以下の通りです。
 オプションが設定されなかった場合は自動的にこの設定で初期化されます。
     
-    animate: false, /* true => .animateを使います, false => 使いません */
-    smart_naz: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
+    animate: true, /* true => .animateを使います, false => 使いません */
+    smart_precondition: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
     auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
     auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
     hide_speed: 1000, /* Wrapperがフェードアウトに要する時間(秒)です。 */
@@ -85,22 +85,22 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 
 ## イベントハンドラ
 
-### on naz_preloaded
+### on preloaded
 
 プリロードが完了したときに呼び出されます。自動的にロード画面はフェードアウトするので、このタイミングでコンテンツを視覚化することをお勧めします。  
 (自動的にフェードアウトさせなく無いですか？オプションで`auto_hide: false`とセットしましょう)
 
-	$("body").on("naz_preloaded", function(event){
+	$("body").on("preloaded", function(event){
       $("#container").css("display", "block");
       $("#container").animate({opacity: 1}, 800);
       $("#player").trigger("play");
     });
 
-### on naz_progress
+### on preload_progress
 
 進捗が変化した際に呼ばれます。カスタムアニメーションを定義したい場合に使うと良いでしょう。
 
-	$("body").on("naz_progress", function(event, percent, finished_count, total_count){
+	$("body").on("preload_progress", function(event, percent, finished_count, total_count){
 	  /* percent => 現在の進捗
 	   * finished_count => ロードが完了したリソースの数
 	   * total_count => クエリに入っているリソース数
@@ -123,7 +123,7 @@ Nazは特別なこと無しに以下のようなタグはプリロードして�
 
 # クレジット
 
-Maintained by oame - <http://oameya.com>  
+Maintained by o_ame - <http://oameya.com>  
 Licensed by MIT License
 
 ※サンプルピクチャは私が撮りました :)

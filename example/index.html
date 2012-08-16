@@ -6,28 +6,28 @@
   <meta name="viewport" content="width=800px, initial-scale=1.0" />
   <meta name="author" content="oame" />
 
-  <link rel="stylesheet" type="text/css" href="../jquery.naz.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="../jquery.precondition.css" media="all" />
   <link rel="stylesheet" type="text/css" href="stylesheets/index1.css" media="all" />
 
   <script type="text/javascript" src="javascripts/jquery.js"></script>
-  <script type="text/javascript" src="../jquery.naz-1.3.js"></script>
+  <script type="text/javascript" src="../jquery.precondition-1.4.js"></script>
   <script type="text/javascript">
   $(function(){
-    $("body").naz({animate: true, show_text: true});
+    $("body").precondition();
 
-    $("body").on("naz_preloaded", function(event){
+    $("body").on("preloaded", function(event){
       $("#container").css("display", "block");
       $("#container").animate({opacity: 1}, 800);
     });
   });
   </script>
-  <title>Naz - Example</title>
+  <title>jQuery.precondition - Example</title>
 </head>
 <body>
   <div id="container">
     <img src="images/pic1.jpg" />
-    <div id="pic" data-naz-src="images/pic2.jpg"></div>
-    <img data-naz-src="images/pic3.jpg" />
+    <div id="pic" data-preload="images/pic2.jpg"></div>
+    <img data-preload="images/pic3.jpg" />
   </div>
 </body>
 </html>
