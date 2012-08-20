@@ -1,11 +1,11 @@
 /*
- * jquery.precondition - jQuery Plugin
+ * jQuery Prelude - jQuery Plugin
  * Simple preloader plug-in
  *
- * Examples and document at http://oame.github.com/jquery.precondition
+ * Examples and document at http://oame.github.com/jquery.prelude
  *
  * Copyright(C) 2012 o_ame - http://oameya.com
- * version: 1.4
+ * version: 1.5
  * require: jQuery 1.7.2+
  * license: MIT License
  */
@@ -17,7 +17,7 @@
     }
   };
 
-  $precondition = {
+  $prelude = {
     collect_objects: function(node){
       var _objects = [];
       $(node + " *").each(function(){
@@ -76,12 +76,12 @@
       });
     },
     auto_assets: function(node){
-      var wrapper = $("<div/>").attr("id", "precondition-wrapper");
-      var slider = $("<div/>").attr("id", "precondition-slider");
+      var wrapper = $("<div/>").attr("id", "prelude-wrapper");
+      var slider = $("<div/>").attr("id", "prelude-slider");
       slider.append($("<span/>"));
       if(config.show_text){
-        var text_layer = $("<div/>").attr("id", "precondition-text-layer");
-        text_layer.append($("<p/>").attr("id", "precondition-text"));
+        var text_layer = $("<div/>").attr("id", "prelude-text-layer");
+        text_layer.append($("<p/>").attr("id", "prelude-text"));
         wrapper.append(text_layer);
       }
       wrapper.append(slider);
@@ -104,7 +104,7 @@
   /* Default configuration */
   config = {
     animate: true,
-    smart_precondition: true,
+    smart_prelude: true,
     auto_assets: true,
     auto_hide: true,
     hide_speed: 1000,
@@ -116,24 +116,24 @@
     }
   };
 
-  $.fn.precondition = function(options){
+  $.fn.prelude = function(options){
     /* Configure options */
     if(typeof options === "undefined")options = {};
     config = jQuery.extend(config, options);
     config.top_node = $(this).selector;
     config.html = {};
-    config.html.wrapper = config.top_node + " > #precondition-wrapper";
-    config.html.slider = config.html.wrapper + " > #precondition-slider";
+    config.html.wrapper = config.top_node + " > #prelude-wrapper";
+    config.html.slider = config.html.wrapper + " > #prelude-slider";
     config.html.indicator = config.html.slider + " > span";
-    config.html.text_node = config.html.wrapper + " > #precondition-text-layer > #precondition-text";
+    config.html.text_node = config.html.wrapper + " > #prelude-text-layer > #prelude-text";
     config.html.insersion = ":percent";
 
-    if(config.smart_precondition)$precondition.sniff_tags(config.top_node);
-    if(config.auto_assets)$precondition.auto_assets(config.top_node);
+    if(config.smart_prelude)$prelude.sniff_tags(config.top_node);
+    if(config.auto_assets)$prelude.auto_assets(config.top_node);
 
-    objects = $precondition.collect_objects(config.top_node);
+    objects = $prelude.collect_objects(config.top_node);
     total_count = objects.length;
-    $precondition.preload_objects($.extend(true, [], objects), function(_total, _loaded){
+    $prelude.preload_objects($.extend(true, [], objects), function(_total, _loaded){
       /* Called when finished loading object */
       now_perc = Math.ceil(100 * _loaded / _total);
       finished_count += 1;
@@ -145,7 +145,7 @@
         if((total_count <= displayed_count) && (animated == false)){
           /* 読み込み終わり */
           window.clearInterval(timer);
-          $precondition.replace_objects_to_appear(objects);
+          $prelude.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
               $(config.html.wrapper).fadeOut(config.hide_speed, function(){
@@ -180,7 +180,7 @@
         if(displayed_perc >= 100){
           /* 読み込み終わり */
           window.clearInterval(timer);
-          $precondition.replace_objects_to_appear(objects);
+          $prelude.replace_objects_to_appear(objects);
 
           if(config.auto_hide){
               $(config.html.wrapper).fadeOut(config.hide_speed, function(){

@@ -1,3 +1,8 @@
+1.5
+----
+
+* Rename "jquery.precondition" to "jQuery Prelude"
+
 1.4
 ----
 

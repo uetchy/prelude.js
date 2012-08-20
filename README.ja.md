@@ -1,6 +1,6 @@
-# jQuery.precondition (旧名: jquery.naz)
+# jQuery Prelude (旧名: jquery.naz)
 
-jQuery.precondition はシンプルなプリローダープラグインです。  
+jQuery Prelude はシンプルなプリローダープラグインです。  
 Webデザイナーがデザインだけに集中出来るよう設計されています。
 
 # 必須環境
@@ -14,20 +14,20 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 # 使い方
 
-`jquery.precondition-1.4.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.precondition-1.4.min.js`を代わりに追加します。
+`jquery.prelude-1.5.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+小さいサイズがお好みでしたら`jquery.prelude-1.5.min.js`を代わりに追加します。
 
-`jquery.precondition.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
+`jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
-	<link rel="stylesheet" type="text/css" href="/path/to/jquery.precondition.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.precondition-1.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"></script>
 	<script type="text/javascript">
 	$(function(){
-	  $("body").precondition();
+	  $("body").prelude();
 	  $("body").on("preloaded", function(){
-	    // やったー！preloadedイベントが呼ばれたということはPreconditionが全てのリソースをプリロードしたということです！
+	    // やったー！preloadedイベントが呼ばれたということはjQuery Preludeが全てのリソースをプリロードしたということです！
 	  });
 	});
 	</script>
@@ -37,8 +37,8 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 ### CSS background-imageをプリロードするには
 
-Preconditionは特別なこと無しに以下のようなタグはプリロードしてくれます。  
-(もし勝手に追加されたくなかったらオプションで`smart_precondition: false`とセットしよう)
+jQuery Preludeは特別なこと無しに以下のようなタグはプリロードしてくれます。  
+(もし勝手に追加されたくなかったらオプションで`smart_prelude: false`とセットしよう)
 
 	<img src="hoge" />
 	<audio src="hoge" />
@@ -53,7 +53,7 @@ Preconditionは特別なこと無しに以下のようなタグはプリロー�
 	/* HTML */
 	<div id="pic"></div>
 
-というコードをPreconditionに拾ってもらうには
+というコードをjQuery Preludeに拾ってもらうには
 
 	/* CSS */
 	#pic {
@@ -68,11 +68,11 @@ Preconditionは特別なこと無しに以下のようなタグはプリロー�
 
 ## オプション
 
-`$(element).precondition()`の引数で指定出来るオプションは以下の通りです。
+`$(element).prelude()`の引数で指定出来るオプションは以下の通りです。
 オプションが設定されなかった場合は自動的にこの設定で初期化されます。
     
     animate: true, /* true => .animateを使います, false => 使いません */
-    smart_precondition: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
+    smart_prelude: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
     auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
     auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
     hide_speed: 1000, /* Wrapperがフェードアウトに要する時間(秒)です。 */
