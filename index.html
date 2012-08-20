@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>jquery.precondition by oame</title>
+    <title>jQuery Prelude by oame</title>
   </head>
 
   <body>
@@ -18,24 +18,24 @@
       <div class="inner">
 
         <header>
-          <h1>jquery.precondition</h1>
+          <h1>jQuery Prelude</h1>
           <h2>Simple preloader</h2>
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/oame/jquery.precondition/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/oame/jquery.precondition/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/oame/jquery.precondition" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          <a href="https://github.com/oame/jquery.prelude/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/oame/jquery.prelude/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/oame/jquery.prelude" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
 
         <section id="main_content">
-          <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.precondition/blob/master/README.ja.md">こちら</a></p>
+          <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.prelude/blob/master/README.ja.md">こちら</a></p>
 
-<h1>jquery.precondition (also known as "jquery.naz")</h1>
+<h1>jQuery Prelude (also known as "jquery.naz")</h1>
 
-<p>jquery.precondition is a simple and advanced preloader plugin for jQuery.
+<p>jQuery Prelude is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.</p>
 
 <h1>Requirements</h1>
@@ -49,18 +49,18 @@ Web designers can focus on just design without think about unnecessary things.</
 <li>This is compatible with existing project but you need to modify the HTML tag only if it has a CSS background-image.</li>
 </ul><h1>How to Use</h1>
 
-<p>Add <code>jquery.precondition-1.4.js</code> to your project(e.g. <code>javascripts/</code>)<br>
-If you want to smaller size, please add <code>jquery.precondition-1.4.min.js</code> to your project instead of <code>jquery.precondition-1.4.js</code>.</p>
+<p>Add <code>jquery.prelude-1.5.js</code> to your project(e.g. <code>javascripts/</code>)<br>
+If you want to smaller size, please add <code>jquery.prelude-1.5.min.js</code> to your project instead of <code>jquery.prelude-1.5.js</code>.</p>
 
-<p>Add <code>jquery.precondition.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
+<p>Add <code>jquery.prelude.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
 
 <p>Add add following codes to inner of &lt;header&gt;(jQuery is required :o).</p>
 
-<pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.precondition.css" media="all"/&gt;
-&lt;script type="text/javascript" src="/path/to/jquery.precondition-1.4.js"&gt;&lt;/script&gt;
+<pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/&gt;
+&lt;script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
 $(function(){
-  $("body").precondition();
+  $("body").prelude();
   $("body").on("preloaded", function(){
     // Yay! "preloaded" is called when plugin has complete preloaded all of resources!
   });
@@ -73,8 +73,8 @@ Other samples is contained in the <code>example/</code>. Take a look if you like
 
 <h3>How to preload CSS background-image</h3>
 
-<p>Precondition will automatically preloaded with a tag without special action.
-(if you not want to be added automatically, you should set <code>smart_precondition: false</code> to option)</p>
+<p>jQuery Prelude will automatically preloaded with a tag without special action.
+(if you not want to be added automatically, you should set <code>smart_prelude: false</code> to option)</p>
 
 <pre><code>&lt;img src="hoge" /&gt;
 &lt;audio src="hoge" /&gt;
@@ -107,11 +107,11 @@ Other samples is contained in the <code>example/</code>. Take a look if you like
 
 <h2>Configurations</h2>
 
-<p>Options can be specified with the argument of Precondition is as following.
+<p>Options can be specified with the argument of jQuery Prelude is as following.
 If the option is not set will be initialized with this setting automatically.</p>
 
 <pre><code>animate: true, /* true =&gt; Using .animate, false =&gt; Doesn't use */
-smart_precondition: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
+smart_prelude: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
 auto_assets: true, /* Preparing HTML for preloader automatically. */
 auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
 hide_speed: 1000, /* Fade-out speed */
@@ -169,7 +169,7 @@ Licensed by MIT License</p>
         </section>
 
         <footer>
-          jquery.precondition is maintained by <a href="https://github.com/oame">oame</a><br>
+          jQuery Prelude is maintained by <a href="https://github.com/oame">oame</a><br>
           This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
