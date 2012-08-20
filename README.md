@@ -1,8 +1,8 @@
-日本語ドキュメントは[こちら](https://github.com/oame/jquery.precondition/blob/master/README.ja.md)
+日本語ドキュメントは[こちら](https://github.com/oame/jquery.prelude/blob/master/README.ja.md)
 
-# jquery.precondition (also known as "jquery.naz")
+# jQuery Prelude (also known as "jquery.naz")
 
-jquery.precondition is a simple and advanced preloader plugin for jQuery.
+jQuery Prelude is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.
 
 # Requirements
@@ -16,18 +16,18 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Add `jquery.precondition-1.4.js` to your project(e.g. `javascripts/`)  
-If you want to smaller size, please add `jquery.precondition-1.4.min.js` to your project instead of `jquery.precondition-1.4.js`.
+Add `jquery.prelude-1.5.js` to your project(e.g. `javascripts/`)  
+If you want to smaller size, please add `jquery.prelude-1.5.min.js` to your project instead of `jquery.prelude-1.5.js`.
 
-Add `jquery.precondition.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
+Add `jquery.prelude.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
 
 Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
 
-	<link rel="stylesheet" type="text/css" href="/path/to/jquery.precondition.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.precondition-1.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"></script>
 	<script type="text/javascript">
 	$(function(){
-	  $("body").precondition();
+	  $("body").prelude();
 	  $("body").on("preloaded", function(){
 	    // Yay! "preloaded" is called when plugin has complete preloaded all of resources!
 	  });
@@ -39,8 +39,8 @@ Other samples is contained in the `example/`. Take a look if you like!
 
 ### How to preload CSS background-image
 
-Precondition will automatically preloaded with a tag without special action.
-(if you not want to be added automatically, you should set `smart_precondition: false` to option)
+jQuery Prelude will automatically preloaded with a tag without special action.
+(if you not want to be added automatically, you should set `smart_prelude: false` to option)
 
 	<img src="hoge" />
 	<audio src="hoge" />
@@ -70,11 +70,11 @@ You should rewrite as described above.
 
 ## Configurations
 
-Options can be specified with the argument of Precondition is as following.
+Options can be specified with the argument of jQuery Prelude is as following.
 If the option is not set will be initialized with this setting automatically.
     
     animate: true, /* true => Using .animate, false => Doesn't use */
-    smart_precondition: true, /* Locate <img> and <audio> and add automatically to preload query. */
+    smart_prelude: true, /* Locate <img> and <audio> and add automatically to preload query. */
     auto_assets: true, /* Preparing HTML for preloader automatically. */
     auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
     hide_speed: 1000, /* Fade-out speed */
