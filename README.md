@@ -1,6 +1,6 @@
 日本語ドキュメントは[こちら](https://github.com/oame/jquery.prelude/blob/master/README.ja.md)
 
-# jQuery Prelude (also known as "jquery.naz")
+# jQuery Prelude
 
 jQuery Prelude is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.
@@ -16,15 +16,14 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Add `jquery.prelude-1.5.js` to your project(e.g. `javascripts/`)  
-If you want to smaller size, please add `jquery.prelude-1.5.min.js` to your project instead of `jquery.prelude-1.5.js`.
+Add `jquery.prelude-1.6.js` to your project(e.g. `javascripts/`)  
 
 Add `jquery.prelude.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
 
 Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.6.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").prelude();

@@ -1,4 +1,4 @@
-# jQuery Prelude (旧名: jquery.naz)
+# jQuery Prelude
 
 jQuery Prelude はシンプルなプリローダープラグインです。  
 Webデザイナーがデザインだけに集中出来るよう設計されています。
@@ -14,15 +14,14 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 # 使い方
 
-`jquery.prelude-1.5.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-小さいサイズがお好みでしたら`jquery.prelude-1.5.min.js`を代わりに追加します。
+`jquery.prelude-1.6.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
 
 `jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.6.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").prelude();
