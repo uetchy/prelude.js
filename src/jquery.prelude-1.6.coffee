@@ -84,7 +84,7 @@
 
   $.fn.prelude = (options) ->
     # Configure options
-    options = {} if options?
+    options = {} unless options?
     config = jQuery.extend(config, options)
     config.top_node = $(this).selector
     config.html = {}
