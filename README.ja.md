@@ -1,6 +1,6 @@
-# jQuery Prelude
+# jquery.prelude
 
-jQuery Prelude はシンプルなプリローダープラグインです。
+jquery.prelude はシンプルなプリローダープラグインです。
 
 # 必須環境
 
@@ -13,11 +13,11 @@ jQuery Prelude はシンプルなプリローダープラグインです。
 
 # 使い方
 
-`jquery.prelude-1.7.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
-`jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！  
+`jquery.prelude-1.7.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。
+`jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
 
->もし、Coffee+SASS環境で作業している場合は、それぞれ  
- `lib/jquery.prelude-1.7.coffee`と`lib/jquery.prelude.scss`  
+>もし、Coffee+SASS環境で作業している場合は、それぞれ
+ `lib/jquery.prelude-1.7.coffee`と`lib/jquery.prelude.scss`
   を代わりに使用してください。
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
@@ -54,7 +54,7 @@ jQuery Preludeは特別なこと無しに以下のようなタグはプリロー
 	/* HTML */
 	<div id="pic"></div>
 
-というコードをjQuery Preludeに拾ってもらうには
+というコードをjquery.preludeに拾ってもらうには
 
 	/* CSS */
 	#pic {

@@ -1,8 +1,8 @@
 日本語ドキュメントは[こちら](https://github.com/oame/jquery.prelude/blob/master/README.ja.md)
 
-# jQuery Prelude
+# jquery.prelude
 
-jQuery Prelude is a simple and advanced preloader plugin for jQuery.
+jquery.prelude is a simple and advanced preloader plugin for jQuery.
 Web designers can focus on just design without think about unnecessary things.
 
 # Requirements
@@ -39,7 +39,7 @@ Other samples is contained in the `example/`. Take a look if you like!
 
 ### How to preload CSS background-image
 
-jQuery Prelude will automatically preloaded with a tag without special action.
+jquery.prelude will automatically preloaded with a tag without special action.
 (if you not want to be added automatically, you should set `smart_prelude: false` to option)
 
 	<img src="hoge" />

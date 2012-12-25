@@ -1,11 +1,11 @@
 ###
-# jQuery Prelude - jQuery Plugin
-# Simple preloader plug-in
+# jquery.prelude
+# Simple preloader plug-in.
 #
 # Examples and document at http://oame.github.com/jquery.prelude
 #
 # Copyright(C) 2012 o_ame - http://oameya.com
-# version: 1.6
+# version: 1.7
 # require: jQuery 1.7.2+
 # license: MIT License
 ###
