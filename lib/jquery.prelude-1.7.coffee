@@ -48,12 +48,12 @@
             $(this).attr src: $(this).data "preload"
           else
             $(this).css "background-image": "url( #{$(this).data("preload")} )"
-    auto_assets: (node) ->
+    auto_prepare_assets: (node) ->
       wrapper = $("<div/>").attr "id", "prelude-wrapper"
       slider = $("<div/>").attr "id", "prelude-slider"
       slider.append $("<span/>")
       if config.show_text
-        text_layer = $("<div/>").attr id: "prelude-text-layer"
+        text_layer = $("<div/>").attr id: "prelude-text-layout"
         text_layer.append $("<p/>").attr "id", "prelude-text"
         wrapper.append text_layer
       wrapper.append slider
@@ -71,13 +71,13 @@
 
   # Default configuration
   config =
-    animate: true
-    smart_prelude: true
-    auto_assets: true
+    smart_preload: true
+    auto_add_source: true
+    auto_prepare_assets: true
     auto_hide: true
     hide_speed: 1000
     show_text: true
-    loading_text: ":percent %"
+    loading_text: ":percentage %"
     animation: # For :animate
       interval: 20
       speed: 1000
@@ -85,17 +85,17 @@
   $.fn.prelude = (options) ->
     # Configure options
     options = {} unless options?
-    config = jQuery.extend(config, options)
     config.top_node = $(this).selector
     config.html = {}
     config.html.wrapper = "#{config.top_node} > #prelude-wrapper"
     config.html.slider = "#{config.html.wrapper} > #prelude-slider"
     config.html.indicator = "#{config.html.slider} > span"
-    config.html.text_node = "#{config.html.wrapper} > #prelude-text-layer > #prelude-text"
-    config.html.insersion = ":percent"
+    config.html.text_node = "#{config.html.wrapper} > #prelude-text-layout > #prelude-text"
+    config.html.insersion = ":percentage"
+    config = jQuery.extend(config, options)
 
-    $prelude.sniff_tags(config.top_node) if config.smart_prelude?
-    $prelude.auto_assets(config.top_node) if config.auto_assets?
+    $prelude.sniff_tags(config.top_node) if config.smart_preload == true
+    $prelude.auto_prepare_assets(config.top_node) if config.auto_prepare_assets == true
 
     objects = $prelude.collect_objects config.top_node
     total_count = objects.length
@@ -104,49 +104,29 @@
       now_perc = Math.ceil(100 * _loaded / _total)
       finished_count += 1
 
-    if config.animate # For animate
-      animated = true
-      timer = window.setInterval ->
-        if total_count <= displayed_count && animated == false
-          # 読み込み終わり
-          window.clearInterval timer
-          $prelude.replace_objects_to_appear objects
+    animated = true
+    timer = window.setInterval ->
+      if total_count <= displayed_count && animated == false
+        # Finishing load
+        window.clearInterval timer
+        $prelude.replace_objects_to_appear objects if config.auto_add_source == true
 
-          if config.auto_hide
-            $(config.html.wrapper).fadeOut config.hide_speed, -> $(config.top_node).trigger "preloaded"
-          else
-            $(config.top_node).trigger "preloaded"
+        if config.auto_hide
+          $(config.html.wrapper).fadeOut config.hide_speed, -> $(config.top_node).trigger "preloaded"
         else
-          top_x = parseInt $(config.html.slider).css "width"
-          now_x = parseInt $(config.html.indicator).css "width"
-          displayed_perc = Math.ceil(now_x / top_x * 100)
-          $(config.top_node).trigger "preload_progress", [displayed_perc, finished_count, total_count]
-          $(config.html.text_node).html(config.loading_text.replace(config.html.insersion, displayed_perc)) if config.show_text?
+          $(config.top_node).trigger "preloaded"
+      else
+        top_x = parseInt $(config.html.slider).css "width"
+        now_x = parseInt $(config.html.indicator).css "width"
+        displayed_perc = Math.ceil(now_x / top_x * 100)
+        $(config.top_node).trigger "preload_progress", [displayed_perc, finished_count, total_count]
+        $(config.html.text_node).html(config.loading_text.replace(config.html.insersion, displayed_perc)) if config.show_text == true
 
-          if displayed_count < finished_count
-            animated = true
-            displayed_count += 1
-            
-            $(config.html.indicator).stop()
-            $(config.html.indicator).animate {width: (displayed_count / total_count)*100 + "%"}, config.speed, -> animated = false
-      , config.interval
-    else # For :nonanimate
-      timer = window.setInterval ->
-        if displayed_perc >= 100
-          # 読み込み終わり
-          window.clearInterval timer
-          $prelude.replace_objects_to_appear objects
+        if displayed_count < finished_count
+          animated = true
+          displayed_count += 1
 
-          if config.auto_hide
-            $(config.html.wrapper).fadeOut config.hide_speed, -> $(config.top_node).trigger "preloaded"
-          else
-            $(config.top_node).trigger "preloaded"
-        else
-          if displayed_perc < now_perc
-            displayed_perc += 1
-            
-            $(config.html.text_node).html(config.loading_text.replace(":percent", displayed_perc)) if config.show_text?
-            $(config.html.indicator).css width: "#{displayed_perc} %"
-            $(config.top_node).trigger "preload_progress", [displayed_perc, finished_count, total_count]
-      , config.animation.interval
+          $(config.html.indicator).stop()
+          $(config.html.indicator).animate {width: (displayed_count / total_count)*100 + "%"}, config.speed, -> animated = false
+    , config.interval
 )(jQuery)
