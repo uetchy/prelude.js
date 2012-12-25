@@ -36,15 +36,15 @@ body {
   background: #d23939;
 }
 
-#prelude-text-layer {
+#prelude-wrapper #prelude-text-layout {
   margin: 20px 0 0 0;
 }
 
-#prelude-text {
+#prelude-wrapper #prelude-text {
   color: #efefef;
 }
 
-#prelude-slider {
+#prelude-wrapper #prelude-slider {
   width: 500px;
   height: 7px;
   margin: 0 auto;
@@ -54,7 +54,7 @@ body {
   padding: 1px;
 }
 
-#prelude-slider span {
+#prelude-wrapper #prelude-slider span {
   display: block;
   width: 0px;
   height: 5px;
