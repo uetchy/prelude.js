@@ -16,14 +16,15 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Add `jquery.prelude-1.6.js` to your project(e.g. `javascripts/`)  
+Add `jquery.prelude-1.7.js` to your project(e.g. `javascripts/`)  
+Add `jquery.prelude.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!  
 
-Add `jquery.prelude.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!
+> If you love Coffee script and SASS, I recommended to use `lib/jquery.prelude-1.7.coffee` and `lib/jquery.prelude.scss`.
 
 Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.prelude-1.6.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.7.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").prelude();
@@ -72,9 +73,9 @@ You should rewrite as described above.
 Options can be specified with the argument of jQuery Prelude is as following.
 If the option is not set will be initialized with this setting automatically.
     
-    animate: true, /* true => Using .animate, false => Doesn't use */
-    smart_prelude: true, /* Locate <img> and <audio> and add automatically to preload query. */
-    auto_assets: true, /* Preparing HTML for preloader automatically. */
+    smart_preload: true, /* Locate <img> and <audio> and add automatically to preload query. */
+    auto_add_source: true, /* When some element preloaded, add src or background-image to this one automatically. */
+    auto_prepare_assets: true, /* Preparing HTML for preloader automatically. */
     auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
     hide_speed: 1000, /* Fade-out speed */
     show_text: true, /* Show loading text. */
@@ -112,6 +113,7 @@ Called when progress has changed(Use cse: implement custom animation).
 
 * ADAMANT HEART - <http://0050.attri.me/> | Designed by sekka.
 * Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
+* 水の都のオートマタ - <http://unisonia.jp/01a/> | Designed by sekka.
 
 # Contribution
 
