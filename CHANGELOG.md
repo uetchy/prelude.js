@@ -1,3 +1,14 @@
+1.7
+----
+* Disable non-animate mode.
+* New configrations added -> auto_prepare_assets, auto_add_source, smart_preload.
+* HTML tags now can be edited.
+* Bug fixed.
+
+1.6
+----
+* Replace javascript to coffee.
+
 1.5
 ----
 

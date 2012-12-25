@@ -1,7 +1,6 @@
 # jQuery Prelude
 
-jQuery Prelude はシンプルなプリローダープラグインです。  
-Webデザイナーがデザインだけに集中出来るよう設計されています。
+jQuery Prelude はシンプルなプリローダープラグインです。
 
 # 必須環境
 
@@ -14,14 +13,17 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 # 使い方
 
-`jquery.prelude-1.6.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+`jquery.prelude-1.7.js`をあなたのプロジェクトに追加します(例えば、`javascripts/`)。  
+`jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！  
 
-`jquery.prelude.css`をプロジェクトに追加します(例えば、`stylesheets/`)。そして好きなように編集しましょう！
+>もし、Coffee+SASS環境で作業している場合は、それぞれ  
+ `lib/jquery.prelude-1.7.coffee`と`lib/jquery.prelude.scss`  
+  を代わりに使用してください。
 
 以下のHTMLタグとJSコードを&lt;head&gt;タグ内に記述してください(もちろんjQueryをロードしてから:)。
 
 	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.prelude-1.6.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.prelude-1.7.js"></script>
 	<script type="text/javascript">
 	$(function(){
 	  $("body").prelude();
@@ -36,19 +38,19 @@ Webデザイナーがデザインだけに集中出来るよう設計されて�
 
 ### CSS background-imageをプリロードするには
 
-jQuery Preludeは特別なこと無しに以下のようなタグはプリロードしてくれます。  
+jQuery Preludeは特別なこと無しに以下のようなタグはプリロードしてくれます。
 (もし勝手に追加されたくなかったらオプションで`smart_prelude: false`とセットしよう)
 
 	<img src="hoge" />
 	<audio src="hoge" />
 
-しかし外部ファイルにも分散することのあるCSS background-image属性はそうはいきません。例えば、  
+しかし外部ファイルにも分散することのあるCSS background-image属性はそうはいきません。例えば、
 
 	/* CSS */
 	#pic {
 	  background: url(images/pic1.jpg) 0 0 no-repeat;
 	}
-	
+
 	/* HTML */
 	<div id="pic"></div>
 
@@ -59,7 +61,7 @@ jQuery Preludeは特別なこと無しに以下のようなタグはプリロー
 	  background: url(images/pic1.jpg) 0 0 no-repeat;
 	  /* background: 0 0 no-repeat; でもいいよ */
 	}
-	
+
 	/* HTML */
 	<div id="pic" data-preload="images/pic1.jpg"></div>
 
@@ -69,10 +71,10 @@ jQuery Preludeは特別なこと無しに以下のようなタグはプリロー
 
 `$(element).prelude()`の引数で指定出来るオプションは以下の通りです。
 オプションが設定されなかった場合は自動的にこの設定で初期化されます。
-    
-    animate: true, /* true => .animateを使います, false => 使いません */
-    smart_prelude: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
-    auto_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
+
+    smart_preload: true, /* <img>と<audio>を探して自動的にプリロード対象に追加します。 */
+    auto_add_source: true, /* プリロードし終わった要素にsrcやbackground-imageを動的に付加します。 */
+    auto_prepare_assets: true, /* 自動的にプリローダのためのHTMLコードが用意されます。 */
     auto_hide: true, /* プリロード完了後にWrapperがフェードアウトします。 */
     hide_speed: 1000, /* Wrapperがフェードアウトに要する時間(秒)です。 */
     show_text: true, /* ローディングテキストを表示します。 */
@@ -86,7 +88,7 @@ jQuery Preludeは特別なこと無しに以下のようなタグはプリロー
 
 ### on preloaded
 
-プリロードが完了したときに呼び出されます。自動的にロード画面はフェードアウトするので、このタイミングでコンテンツを視覚化することをお勧めします。  
+プリロードが完了したときに呼び出されます。自動的にロード画面はフェードアウトするので、このタイミングでコンテンツを視覚化することをお勧めします。
 (自動的にフェードアウトさせなく無いですか？オプションで`auto_hide: false`とセットしましょう)
 
 	$("body").on("preloaded", function(event){
@@ -110,19 +112,18 @@ jQuery Preludeは特別なこと無しに以下のようなタグはプリロー
 # 採用例
 
 * ADAMANT HEART - <http://0050.attri.me/> | Designed by sekka.
-* Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
+* Lost World -ロストワールド- - <http://8lemo.com/products/lost/> | Designed by narugami.
+* 水の都のオートマタ - <http://unisonia.jp/01a/> | Designed by sekka.
 
 # 協力
 
-新しい機能の要望/改善があったら私の[Twitter](http://twitter.com/o_ame)にリプライで教えてください。  
-もしくは匿名で[意見ボックス](http://tracht.ameapp.com/w/5)に書き込んでみてください。  
-必ず採用するとは限りませんが最大限考慮させて頂きます。
+新しい機能の要望/改善があったら私の[Twitter](http://twitter.com/o_ame)にリプライで教えてください。
 
 プルリクエストを歓迎します！
 
 # クレジット
 
-Maintained by o_ame - <http://oameya.com>  
+Maintained by o_ame - <http://oameya.com>
 Licensed by MIT License
 
 ※サンプルピクチャは私が撮りました :)
