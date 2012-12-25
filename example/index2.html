@@ -10,11 +10,11 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/index2.css" media="all" />
 
   <script type="text/javascript" src="javascripts/jquery.js"></script>
-  <script type="text/javascript" src="../jquery.prelude-1.6.js"></script>
+  <script type="text/javascript" src="../jquery.prelude-1.7.js"></script>
   <script type="text/javascript">
   $(function(){
     $("body").prelude({
-      auto_assets: false
+      auto_prepare_assets: false
     });
 
     $("body").on("preloaded", function(event){
@@ -27,7 +27,7 @@
 </head>
 <body>
   <div id="prelude-wrapper">
-    <div id="prelude-text-layer">
+    <div id="prelude-text-layout">
       <p id="prelude-text"></p>
     </div>
     <div id="prelude-slider">
