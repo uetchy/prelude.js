@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-  <meta name="viewport" content="width=800px, initial-scale=1.0" />
-  <meta name="author" content="oame" />
+  <meta name="viewport" content="initial-scale=1.0" />
 
-  <link rel="stylesheet" type="text/css" href="../jquery.prelude.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="stylesheets/index1.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="../prelude.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/index.css" media="all" />
 
-  <script type="text/javascript" src="javascripts/jquery.js"></script>
-  <script type="text/javascript" src="../jquery.prelude-1.7.js"></script>
-  <script type="text/javascript">
-  $(function(){
-    $("body").prelude();
-    $("body").on("preloaded", function(event){
-      $("#container").css("display", "block");
-      $("#container").animate({opacity: 1}, 800);
-    });
-  });
-  </script>
-  <title>jQuery Prelude - Example</title>
+  <title>Prelude.js - Example</title>
 </head>
 <body>
-  <div id="container">
-    <img src="images/pic1.jpg" />
-    <div id="pic" data-preload="images/pic2.jpg"></div>
-    <img data-preload="images/pic3.jpg" />
-  </div>
+<div id="container">
+  <img src="images/pic1.jpg" />
+  <div id="pic" data-preload="images/pic2.jpg"></div>
+  <img data-preload="images/pic3.jpg" />
+</div>
+
+<script type="text/javascript" src="../prelude.js"></script>
+<script type="text/javascript">
+  (function(){
+    var body = document.getElementByTagName("body");
+    Prelude(body, {preloaded: function(event){
+      document.getElementById("container").style.display = "block";
+      document.getElementById("container").style.opacity = 1;
+    }});
+  })();
+</script>
 </body>
 </html>

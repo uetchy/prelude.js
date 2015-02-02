@@ -1,3 +1,8 @@
+2.0
+----
+* Got rid of jQuery
+* Add ACM support
+
 1.7
 ----
 * Disable non-animate mode.

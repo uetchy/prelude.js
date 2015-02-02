@@ -1,0 +1,29 @@
+{
+  "name": "prelude",
+  "version": "2.0.0",
+  "description": "The simple image preloader",
+  "main": "lib/prelude.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uetchy/prelude.git"
+  },
+  "keywords": [
+    "preload"
+  ],
+  "author": "Yasuaki Uechi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uetchy/prelude/issues"
+  },
+  "homepage": "https://github.com/uetchy/prelude",
+  "devDependencies": {
+    "coffee-script": "^1.9.0",
+    "gulp": "^3.8.10"
+  }
+}
