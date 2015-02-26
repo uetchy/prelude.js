@@ -8,24 +8,26 @@
   <link rel="stylesheet" type="text/css" href="../prelude.css" media="all" />
   <link rel="stylesheet" type="text/css" href="stylesheets/index.css" media="all" />
 
-  <title>Prelude.js - Example</title>
+  <title>Prelude.js</title>
 </head>
 <body>
 <div id="container">
-  <img src="images/pic1.jpg" />
-  <div id="pic" data-preload="images/pic2.jpg"></div>
-  <img data-preload="images/pic3.jpg" />
+  <img src="images/shrine.jpg" />
 </div>
 
-<script type="text/javascript" src="../prelude.js"></script>
+<script type="text/javascript" src="../lib/prelude.js"></script>
 <script type="text/javascript">
   (function(){
-    var body = document.getElementByTagName("body");
-    Prelude(body, {preloaded: function(event){
-      document.getElementById("container").style.display = "block";
-      document.getElementById("container").style.opacity = 1;
-    }});
-  })();
+    var loader = new Prelude([
+      'images/shrine.jpg',
+      'images/temple.jpg',
+      'images/people.jpg'
+    ]);
+
+    var animator = new Animator('progressbar');
+
+    loader.on('preloaded', animator);
+  }());
 </script>
 </body>
 </html>
