@@ -3,7 +3,7 @@ plumber = require 'gulp-plumber'
 coffee = require 'gulp-coffee'
 
 gulp.task 'build', ->
-  gulp.src 'src/*.coffee'
+  gulp.src 'src/js/*.coffee'
     .pipe plumber()
     .pipe coffee bare: true
     .pipe gulp.dest './'
