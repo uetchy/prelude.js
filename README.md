@@ -1,13 +1,11 @@
-日本語ドキュメントは[こちら](https://github.com/oame/jquery.prelude/blob/master/README.ja.md)
+# prelude.js
 
-# jquery.prelude
-
-jquery.prelude is a simple and advanced preloader plugin for jQuery.
+prelude.js is a simple and advanced preloader plugin work with CommonJS, AMD and `<script>`.
 Web designers can focus on just design without think about unnecessary things.
 
 # Requirements
 
-* jQuery 1.7.2+
+* Nothing
 
 # Features
 
@@ -16,63 +14,33 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Add `jquery.prelude-1.7.js` to your project(e.g. `javascripts/`)  
-Add `jquery.prelude.css` to your stylesheets folder(as a `stylesheets/`) and edit it as you like!  
+Put `prelude.js` to your project.
 
-> If you love Coffee script and SASS, I recommended to use `lib/jquery.prelude-1.7.coffee` and `lib/jquery.prelude.scss`.
+```js
+<script src="/path/to/prelude.js" type="text/javascript"></script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+    var prelude = new Prelude();
+  });
+</script>
+```
 
-Add add following codes to inner of &lt;header&gt;(jQuery is required :o).
+or
 
-	<link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/>
-	<script type="text/javascript" src="/path/to/jquery.prelude-1.7.js"></script>
-	<script type="text/javascript">
-	$(function(){
-	  $("body").prelude();
-	  $("body").on("preloaded", function(){
-	    // Yay! "preloaded" is called when plugin has complete preloaded all of resources!
-	  });
-	});
-	</script>
+```js
+domready = require('domready');
+Prelude = require('prelude');
 
-The simplest setup is now complete!
-Other samples is contained in the `example/`. Take a look if you like!
-
-### How to preload CSS background-image
-
-jquery.prelude will automatically preloaded with a tag without special action.
-(if you not want to be added automatically, you should set `smart_prelude: false` to option)
-
-	<img src="hoge" />
-	<audio src="hoge" />
-
-However, the CSS background-image attribute that may be distributed to the external file is not the case above. For example,
-
-	/* CSS */
-	#pic {
-	  background: url(images/pic1.jpg) 0 0 no-repeat;
-	}
-	
-	/* HTML */
-	<div id="pic"></div>
-
-If you want to let pick up the following code to her,
-
-	/* CSS */
-	#pic {
-	  background: url(images/pic1.jpg) 0 0 no-repeat;
-	  /* background: 0 0 no-repeat; */
-	}
-	
-	/* HTML */
-	<div id="pic" data-preload="images/pic1.jpg"></div>
-
-You should rewrite as described above.
+domready(function() {
+  var prelude = new Prelude();
+});
+```
 
 ## Configurations
 
 Options can be specified with the argument of jQuery Prelude is as following.
 If the option is not set will be initialized with this setting automatically.
-    
+
     smart_preload: true, /* Locate <img> and <audio> and add automatically to preload query. */
     auto_add_source: true, /* When some element preloaded, add src or background-image to this one automatically. */
     auto_prepare_assets: true, /* Preparing HTML for preloader automatically. */
@@ -115,7 +83,7 @@ Called when progress has changed(Use cse: implement custom animation).
 * Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
 * 水の都のオートマタ - <http://unisonia.jp/01a/> | Designed by sekka.
 
-# Contribution
+# Contributing
 
 If you have any improvement / new feature requests, please tell us in reply to my [Twitter](http://twitter.com/o_ame) or writing to the [box for opinions](http://tracht.ameapp.com/w/5) anonymously.
 
@@ -123,7 +91,5 @@ Pull requests are welcome!
 
 # Credits
 
-Maintained by o_ame - <http://oameya.com>  
+Maintained by Yasuaki Uechi <uetchy@randompaper.co>
 Licensed by MIT License
-
-※Sample pictures shot by me :)
