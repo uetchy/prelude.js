@@ -11,33 +11,16 @@
 do (definition = ->
   'use strict'
 
-  Prelude = (element, options)->
-    @element = element
+  class Prelude
+    constructor: (@element, options)->
+      # Merge options
+      @options = defaults
+      for attrname in options
+        @options[attrname] = options[attrname]
 
-    # Merge options
-    @options = defaults
-    for (attrname in options)
-      @options[attrname] = options[attrname]
-
-    # Collect all HTML elements
-    element.getElementsByTagName("*").forEach(function(){
-      console.log(this);
-    });
-
-  Prelude.prototype =
-    defaults:
-      smart_preload: true
-      auto_add_source: true
-      auto_prepare_assets: true
-      auto_hide: true
-      hide_speed: 1000
-      show_text: true
-      loading_text: ":percentage %"
-      animation:
-        interval: 20
-        speed: 1000
-
-  Prelude
+      # Collect all HTML elements
+      @element.getElementsByTagName("*").forEach ->
+        console.log(this)
 ) ->
   if typeof exports == 'object'
     # CommonJS
@@ -47,17 +30,13 @@ do (definition = ->
     define definition
   else
     # <script>
-    Prelude = definition()
+    Prelude = definition
   return
 
 # (($) ->
 #   Array.prototype.remove = (element)-> this.splice(n, 1) if $(i).data("preload") == element for i, n in this
 
 #   $prelude =
-#     collect_objects: (node)->
-#       _objects = []
-#       $("#{node} *").each -> _objects.push this if $(this).data("preload")?
-#       return _objects
 #     sniff_tags: (node) ->
 #       $("#{node} img,audio").each -> $(this).attr "data-preload", $(this).attr("src") if $(this).attr("src")?
 #     preload_objects: (_objects, callback) ->
