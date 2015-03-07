@@ -6,6 +6,18 @@ prelude.js is a simple and flexible preloader works with CommonJS, AMD and `<scr
 
 * Nothing
 
+# Installation
+
+```console
+$ npm install --save prelude-js
+```
+
+or
+
+```console
+$ bower install --save prelude-js
+```
+
 # How to Use
 
 ```js
@@ -42,19 +54,12 @@ domready ->
     track.play()
 ```
 
-## Configurations
-
-
-
-## Events
-
-### end
-
 # Contributing
 
-Pull requests are welcome!
+This is open-source project. Feel free to open new issue!
 
 # Credits
 
 Maintained by Yasuaki Uechi <uetchy@randompaper.co>
+
 Licensed under MIT License
