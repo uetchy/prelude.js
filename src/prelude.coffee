@@ -34,8 +34,11 @@ class Prelude extends EventEmitter
 
     @_preload()
 
+  getEntry: (name) ->
+    @entries[name]
+
   get: (name) ->
-    @entries[name].result
+    @getEntry(name).result
 
   _guessName: (entry) ->
     if entry.hasOwnProperty 'name'
@@ -67,6 +70,10 @@ class Prelude extends EventEmitter
       entry.result = this
       callback()
     , false
+    tag.addEventListener 'error', ->
+      entry.error = 'Resource not found'
+      callback()
+    , false
     tag.src = entry.from
 
   _loadAudio: (entry, callback) ->
@@ -77,10 +84,33 @@ class Prelude extends EventEmitter
       entry.result = this
       callback()
     , false
+    tag.addEventListener 'error', ->
+      entry.error = 'Resource not found'
+      callback()
+    , false
     tag.src = entry.from
     tag.load()
 
   _loadFont: (entry, callback) ->
-    callback(null)
+    xhr = new XMLHttpRequest()
+    xhr.open 'GET', entry.from, true
+    xhr.responseType = 'arraybuffer'
+    xhr.onload = ->
+      arrayBuffer = xhr.response
+
+      if String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)).indexOf("Not found") < 0
+        data = new Uint8Array arrayBuffer
+        entry.result = data
+        callback()
+      else
+        entry.error = 'Resource not found'
+        callback()
+
+    xhr.addEventListener 'error', (e) ->
+      entry.error = 'Resource not found'
+      callback()
+    , false
+
+    xhr.send(null)
 
 module.exports = Prelude
