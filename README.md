@@ -14,82 +14,52 @@ Web designers can focus on just design without think about unnecessary things.
 
 # How to Use
 
-Put `prelude.js` to your project.
-
 ```js
-<script src="/path/to/prelude.js" type="text/javascript"></script>
-<script type="text/javascript">
+<script src="/path/to/prelude.js"></script>
+<script>
 	document.addEventListener("DOMContentLoaded", function() {
-    var prelude = new Prelude();
+    var loader = new Prelude();
+    loader.add([
+      { from: '/images/picture.jpg' },
+      { from: 'http://example.com/sample.png' }
+    ]);
+    loader.on('end', function(result) {
+      document.body.appendChild( result.get('picture') )
+      document.body.appendChild( result.get('sample') )
+    });
   });
 </script>
 ```
 
-or
+This is more modern way:
 
-```js
-domready = require('domready');
-Prelude = require('prelude');
+```coffee
+domready = require 'domready'
+Prelude  = require 'prelude'
 
-domready(function() {
-  var prelude = new Prelude();
-});
+domready ->
+  # preload assets
+  loader = new Prelude()
+  loader.add from: 'http://cdn.example.com/Go To Hell(ie remix).mp3'
+  loader.on 'end', (result) ->
+    # assets ready
+    track = result.get 'Go To Hell(ie remix)'
+    track.play()
 ```
 
 ## Configurations
 
-Options can be specified with the argument of jQuery Prelude is as following.
-If the option is not set will be initialized with this setting automatically.
 
-    smart_preload: true, /* Locate <img> and <audio> and add automatically to preload query. */
-    auto_add_source: true, /* When some element preloaded, add src or background-image to this one automatically. */
-    auto_prepare_assets: true, /* Preparing HTML for preloader automatically. */
-    auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
-    hide_speed: 1000, /* Fade-out speed */
-    show_text: true, /* Show loading text. */
-    loading_text: ":percent %", /* :percent is replaced by the rate of progression. */
-    animation: {
-      interval: 20, /* The update frequency of the timer. */
-      speed: 1000 /* Animation speed(milli seconds) */
-    }
 
-## Event Handler
+## Events
 
-### on preloaded
-
-Called when the preload is complete. it's a good idea to visualize the content at this timing.
-
-	$("body").on("preloaded", function(event){
-      $("#container").css("display", "block");
-      $("#container").animate({opacity: 1}, 800);
-      $("#player").trigger("play");
-    });
-
-### on preload_progress
-
-Called when progress has changed(Use cse: implement custom animation).
-
-	$("body").on("preload_progress", function(event, percent, finished_count, total_count){
-	  /* percent => Current progress(%)
-	   * finished_count => Count of loaded resources.
-	   * total_count => Count of resources in remining query.
-	   */
-	  $("#circle").animate({transform: "rotate("+percent+")"});
-	});
-
-# Adoption case
-
-* ADAMANT HEART - <http://0050.attri.me/> | Designed by sekka.
-* Lost World -ロストワールド- - http://8lemo.com/products/lost/ | Designed by narugami.
-* 水の都のオートマタ - <http://unisonia.jp/01a/> | Designed by sekka.
+### end
 
 # Contributing
-
-If you have any improvement / new feature requests, please tell us in reply to my [Twitter](http://twitter.com/o_ame) or writing to the [box for opinions](http://tracht.ameapp.com/w/5) anonymously.
 
 Pull requests are welcome!
 
 # Credits
 
 Maintained by Yasuaki Uechi <uetchy@randompaper.co>
-Licensed by MIT License
+Licensed under MIT License
