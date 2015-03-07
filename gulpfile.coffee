@@ -8,9 +8,7 @@ gulp.task 'build', ->
   gulp.src 'src/**/*.coffee'
     .pipe plumber()
     .pipe coffee bare: true
-    .pipe uglify()
-    .pipe concat('prelude.js')
-    .pipe gulp.dest './'
+    .pipe gulp.dest './lib'
 
 gulp.task 'watch', ['build'], ->
   gulp.watch 'src/**/*.coffee', ['build']
