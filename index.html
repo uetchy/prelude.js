@@ -1,180 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Prelude.js by uetchy</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>jQuery Prelude by oame</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Prelude.js</h1>
+        <p class="header">Simple assets preloader</p>
 
-        <header>
-          <h1>jQuery Prelude</h1>
-          <h2>Simple preloader</h2>
-        </header>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/uetchy/prelude/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/uetchy/prelude/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/uetchy/prelude">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/oame/jquery.prelude/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/oame/jquery.prelude/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/oame/jquery.prelude" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/uetchy">uetchy</a></p>
 
-        <hr>
 
-        <section id="main_content">
-          <p>日本語ドキュメントは<a href="https://github.com/oame/jquery.prelude/blob/master/README.ja.md">こちら</a></p>
+      </header>
+      <section>
+        <h1>
+<a id="preludejs" class="anchor" href="#preludejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>prelude.js</h1>
 
-<h1>jQuery Prelude (also known as "jquery.naz")</h1>
+<p>prelude.js is a simple and flexible preloader works with CommonJS, AMD and <code>&lt;script&gt;</code>.</p>
 
-<p>jQuery Prelude is a simple and advanced preloader plugin for jQuery.
-Web designers can focus on just design without think about unnecessary things.</p>
-
-<h1>Requirements</h1>
+<h1>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
 <ul>
-<li>jQuery 1.7.2+</li>
-</ul><h1>Features</h1>
+<li>Nothing</li>
+</ul>
 
-<ul>
-<li>You need to write some Javascript code to set up plugin, but not necessary to write a verbose HTML tag!</li>
-<li>This is compatible with existing project but you need to modify the HTML tag only if it has a CSS background-image.</li>
-</ul><h1>How to Use</h1>
+<h1>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Use</h1>
 
-<p>Add <code>jquery.prelude-1.5.js</code> to your project(e.g. <code>javascripts/</code>)<br>
-If you want to smaller size, please add <code>jquery.prelude-1.5.min.js</code> to your project instead of <code>jquery.prelude-1.5.js</code>.</p>
-
-<p>Add <code>jquery.prelude.css</code> to your stylesheets folder(as a <code>stylesheets/</code>) and edit it as you like!</p>
-
-<p>Add add following codes to inner of &lt;header&gt;(jQuery is required :o).</p>
-
-<pre><code>&lt;link rel="stylesheet" type="text/css" href="/path/to/jquery.prelude.css" media="all"/&gt;
-&lt;script type="text/javascript" src="/path/to/jquery.prelude-1.5.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-$(function(){
-  $("body").prelude();
-  $("body").on("preloaded", function(){
-    // Yay! "preloaded" is called when plugin has complete preloaded all of resources!
+<div class="highlight highlight-js"><pre><span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>/path/to/prelude.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span>/script<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
+    <span class="pl-s3">document</span>.addEventListener(<span class="pl-s1"><span class="pl-pds">"</span>DOMContentLoaded<span class="pl-pds">"</span></span>, <span class="pl-st">function</span>() {
+    <span class="pl-s">var</span> loader <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Prelude</span>();
+    loader.<span class="pl-s3">add</span>([
+      { from<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>/images/picture.jpg<span class="pl-pds">'</span></span> },
+      { from<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>http://example.com/sample.png<span class="pl-pds">'</span></span> }
+    ]);
+    loader.on(<span class="pl-s1"><span class="pl-pds">'</span>end<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">result</span>) {
+      <span class="pl-s3">document</span>.<span class="pl-sc">body</span>.<span class="pl-s3">appendChild</span>( result.get(<span class="pl-s1"><span class="pl-pds">'</span>picture<span class="pl-pds">'</span></span>) )
+      <span class="pl-s3">document</span>.<span class="pl-sc">body</span>.<span class="pl-s3">appendChild</span>( result.get(<span class="pl-s1"><span class="pl-pds">'</span>sample<span class="pl-pds">'</span></span>) )
+    });
   });
-});
-&lt;/script&gt;
-</code></pre>
+<span class="pl-k">&lt;</span>/script<span class="pl-k">&gt;</span></pre></div>
 
-<p>The simplest setup is now complete!
-Other samples is contained in the <code>example/</code>. Take a look if you like!</p>
+<p>Prelude also supports CommonJS, AMD -style including options.
+This is more modern way:</p>
 
-<h3>How to preload CSS background-image</h3>
+<div class="highlight highlight-coffee"><pre><span class="pl-v"><span class="pl-v">domready <span class="pl-k">=</span></span></span> <span class="pl-s3">require</span> <span class="pl-s1"><span class="pl-pds">'</span>domready<span class="pl-pds">'</span></span>
+<span class="pl-v"><span class="pl-v">Prelude  <span class="pl-k">=</span></span></span> <span class="pl-s3">require</span> <span class="pl-s1"><span class="pl-pds">'</span>prelude<span class="pl-pds">'</span></span>
 
-<p>jQuery Prelude will automatically preloaded with a tag without special action.
-(if you not want to be added automatically, you should set <code>smart_prelude: false</code> to option)</p>
+domready <span class="pl-st">-&gt;</span>
+  <span class="pl-c"># preload assets</span>
+  <span class="pl-v"><span class="pl-v">loader <span class="pl-k">=</span></span></span> <span class="pl-k">new</span> <span class="pl-en">Prelude</span>()
+  loader.add <span class="pl-v"><span class="pl-v">from:</span></span> <span class="pl-s1"><span class="pl-pds">'</span>http://cdn.example.com/Go To The Hell(ie remix).mp3<span class="pl-pds">'</span></span>
+  loader.on <span class="pl-s1"><span class="pl-pds">'</span>end<span class="pl-pds">'</span></span>, <span class="pl-vpf">(result)</span> <span class="pl-st">-&gt;</span>
+    <span class="pl-c"># assets ready</span>
+    <span class="pl-v"><span class="pl-v">track <span class="pl-k">=</span></span></span> result.get <span class="pl-s1"><span class="pl-pds">'</span>Go To The Hell(ie remix)<span class="pl-pds">'</span></span>
+    track.play()</pre></div>
 
-<pre><code>&lt;img src="hoge" /&gt;
-&lt;audio src="hoge" /&gt;
-</code></pre>
+<h2>
+<a id="configurations" class="anchor" href="#configurations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurations</h2>
 
-<p>However, the CSS background-image attribute that may be distributed to the external file is not the case above. For example,</p>
+<h2>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
 
-<pre><code>/* CSS */
-#pic {
-  background: url(images/pic1.jpg) 0 0 no-repeat;
-}
+<h3>
+<a id="end" class="anchor" href="#end" aria-hidden="true"><span class="octicon octicon-link"></span></a>end</h3>
 
-/* HTML */
-&lt;div id="pic"&gt;&lt;/div&gt;
-</code></pre>
-
-<p>If you want to let pick up the following code to her,</p>
-
-<pre><code>/* CSS */
-#pic {
-  background: url(images/pic1.jpg) 0 0 no-repeat;
-  /* background: 0 0 no-repeat; */
-}
-
-/* HTML */
-&lt;div id="pic" data-preload="images/pic1.jpg"&gt;&lt;/div&gt;
-</code></pre>
-
-<p>You should rewrite as described above.</p>
-
-<h2>Configurations</h2>
-
-<p>Options can be specified with the argument of jQuery Prelude is as following.
-If the option is not set will be initialized with this setting automatically.</p>
-
-<pre><code>animate: true, /* true =&gt; Using .animate, false =&gt; Doesn't use */
-smart_prelude: true, /* Locate &lt;img&gt; and &lt;audio&gt; and add automatically to preload query. */
-auto_assets: true, /* Preparing HTML for preloader automatically. */
-auto_hide: true, /* To fade-out preploader when preloaded all of resources. */
-hide_speed: 1000, /* Fade-out speed */
-show_text: true, /* Show loading text. */
-loading_text: ":percent %", /* :percent is replaced by the rate of progression. */
-animation: {
-  interval: 20, /* The update frequency of the timer. */
-  speed: 1000 /* Animation speed(milli seconds) */
-}
-</code></pre>
-
-<h2>Event Handler</h2>
-
-<h3>on preloaded</h3>
-
-<p>Called when the preload is complete. it's a good idea to visualize the content at this timing.</p>
-
-<pre><code>$("body").on("preloaded", function(event){
-  $("#container").css("display", "block");
-  $("#container").animate({opacity: 1}, 800);
-  $("#player").trigger("play");
-});
-</code></pre>
-
-<h3>on preload_progress</h3>
-
-<p>Called when progress has changed(Use cse: implement custom animation).</p>
-
-<pre><code>$("body").on("preload_progress", function(event, percent, finished_count, total_count){
-  /* percent =&gt; Current progress(%)
-   * finished_count =&gt; Count of loaded resources.
-   * total_count =&gt; Count of resources in remining query.
-   */
-  $("#circle").animate({transform: "rotate("+percent+")"});
-});
-</code></pre>
-
-<h1>Adoption case</h1>
-
-<ul>
-<li>ADAMANT HEART - <a href="http://0050.attri.me/">http://0050.attri.me/</a> | Designed by sekka.</li>
-<li>Lost World -ロストワールド- - <a href="http://8lemo.com/products/lost/">http://8lemo.com/products/lost/</a> | Designed by narugami.</li>
-</ul><h1>Contribution</h1>
-
-<p>If you have any improvement / new feature requests, please tell us in reply to my <a href="http://twitter.com/o_ame">Twitter</a> or writing to the <a href="http://tracht.ameapp.com/w/5">box for opinions</a> anonymously.</p>
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h1>
 
 <p>Pull requests are welcome!</p>
 
-<h1>Credits</h1>
+<h1>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h1>
 
-<p>Maintained by o_ame - <a href="http://oameya.com">http://oameya.com</a><br>
-Licensed by MIT License</p>
-
-<p>※Sample pictures shot by me :)</p>
-        </section>
-
-        <footer>
-          jQuery Prelude is maintained by <a href="https://github.com/oame">oame</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+<p>Maintained by Yasuaki Uechi <a href="mailto:uetchy@randompaper.co">uetchy@randompaper.co</a>
+Licensed under MIT License</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
