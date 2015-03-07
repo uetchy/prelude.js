@@ -1,0 +1,12 @@
+{
+  "framework": "mocha",
+  "src_files": [
+    "lib/*.js",
+    "test/prelude.test.coffee"
+  ],
+  "before_tests": "browserify test/prelude.test.coffee -t coffeeify -o test/prelude.test.js",
+  "serve_files": [
+    "test/*.test.js"
+  ],
+  "on_exit": "rm test/*.test.js"
+}

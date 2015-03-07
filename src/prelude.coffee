@@ -16,50 +16,73 @@ do (definition = ->
 
   class Prelude extends EventEmitter
     constructor: (@element, options={}) ->
-      # Merge options
       @options =
         blah: 'blah'
       for attrname in options
         @options[attrname] = options[attrname]
 
-      @objects = []
+      @entries = {}
+      @remaining = 0
 
-    add: (entries) ->
-      if entries.constructor == Array
-        for el in entries
-          @objects.push el
+    add: (query) ->
+      if query.constructor == Array
+        for entry in query
+          @entries[@_guessName(entry)] = entry
+        @remaining += query.length
       else
-        @objects.push entries
-
-      console.log @ev
+        @entries[@_guessName(query)] = query
+        @remaining++
 
       @_preload()
 
+    get: (name) ->
+      @entries[name].result
+
+    _guessName: (entry) ->
+      if entry.hasOwnProperty 'name'
+        entry.name
+      else
+        path.basename(entry.from, path.extname(entry.from))
+
     _preload: ->
-      setTimeout =>
-        @emit 'end'
-      , 200
-      total = @objects.length
-      for url in @objects
-        console.log url
-        switch path.extname(url)
-          when '.mp3'
-            @_loadAudio(url, @_resourceLoaded)
-          when '.jpg'
-            @_loadImage(url, @_resourceLoaded)
+      for name, entry of @entries
+        switch path.extname(entry.from)
+          when '.mp3', '.wav', '.ogg', '.m4a'
+            @_loadAudio(entry, @_resourceLoaded)
+          when '.jpg', '.png', '.gif', '.jpeg'
+            @_loadImage(entry, @_resourceLoaded)
+          when '.otf', '.ttf', '.eot', '.woff'
+            @_loadFont(entry, @_resourceLoaded)
+          else
+            @emit 'error', 'Unknown file format for #{entry.from}'
+            @remaining--
 
-    _resourceLoaded: () ->
+    _resourceLoaded: =>
+      @remaining--
+      if @remaining <= 0
+        @emit 'end', this
 
+    _loadImage: (entry, callback) ->
+      tag = new Image()
+      tag.addEventListener 'load', ->
+        entry.result = this
+        callback()
+      , false
+      tag.src = entry.from
 
-    _loadImage: (uri, callback) ->
-      image = new Image()
-      img.onload = callback
-      img.src = uri
+    _loadAudio: (entry, callback) ->
+      tag = new Audio()
+      tag.autoplay = false
+      tag.preload = 'none'
+      tag.addEventListener 'canplaythrough', ->
+        entry.result = this
+        callback()
+      , false
+      tag.src = entry.from
+      tag.load()
 
-    _loadAudio: (uri, callback) ->
-      audio = new Audio()
-      audio.addEventListener 'canplaythrough', callback(), false
-      audio.src = uri
+    _loadFont: (entry, callback) ->
+      callback(null)
 
 ) ->
   if typeof exports == 'object'

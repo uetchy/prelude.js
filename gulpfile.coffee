@@ -1,14 +1,22 @@
 gulp = require 'gulp'
-plumber = require 'gulp-plumber'
-coffee = require 'gulp-coffee'
-uglify = require 'gulp-uglify'
-concat = require 'gulp-concat'
+# uglify = require 'gulp-uglify'
+browserify = require 'browserify'
+source = require 'vinyl-source-stream'
+buffer = require 'vinyl-buffer'
+sourcemaps = require 'gulp-sourcemaps'
 
 gulp.task 'build', ->
-  gulp.src 'src/**/*.coffee'
-    .pipe plumber()
-    .pipe coffee bare: true
-    .pipe gulp.dest './lib'
+  browserify
+    entries: ['./src/prelude.coffee']
+    extensions: ['.coffee', '.js']
+    debug: true
+  .transform 'coffeeify'  # coffee
+  .bundle()
+  .on 'error', (err) ->
+    console.log err.message
+    this.emit 'end'
+  .pipe source 'index.js'
+  .pipe gulp.dest './lib'
 
 gulp.task 'watch', ['build'], ->
   gulp.watch 'src/**/*.coffee', ['build']
