@@ -47,10 +47,10 @@ Prelude  = require 'prelude'
 domready ->
   # preload assets
   loader = new Prelude()
-  loader.add from: 'http://cdn.example.com/Go To The Hell(ie remix).mp3'
+  loader.add from: 'http://cdn.example.com/bgm.mp3'
   loader.on 'end', (result) ->
     # assets ready
-    track = result.get 'Go To The Hell(ie remix)'
+    track = result.get 'bgm'
     track.play()
 ```
 
