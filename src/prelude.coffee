@@ -1,13 +1,3 @@
-###
-# Prelude.js
-# Simple JavaScript preloader
-#
-# Examples and document at http://uetchy.github.com/prelude
-#
-# Yasuaki Uechi
-# License: MIT License
-###
-
 {EventEmitter} = require 'events'
 path = require 'path'
 
