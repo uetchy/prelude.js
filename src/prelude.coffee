@@ -87,8 +87,12 @@ class Prelude extends EventEmitter
     xhr.responseType = 'arraybuffer'
     xhr.onload = ->
       arrayBuffer = xhr.response
+      bufferString = String.fromCharCode.apply(
+        null,
+        new Uint8Array(arrayBuffer)
+      )
 
-      if String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)).indexOf("Not found") < 0
+      if bufferString.indexOf('Not found') < 0
         data = new Uint8Array arrayBuffer
         entry.result = data
         callback()
