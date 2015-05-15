@@ -1,30 +1,61 @@
-gulp       = require 'gulp'
-gulpif     = require 'gulp-if'
-uglify     = require 'gulp-uglify'
-derequire  = require 'gulp-derequire'
-sourcemaps = require 'gulp-sourcemaps'
-browserify = require 'browserify'
-source     = require 'vinyl-source-stream'
-buffer     = require 'vinyl-buffer'
+gulp       = require "gulp"
+gulpif     = require "gulp-if"
+sourcemaps = require "gulp-sourcemaps"
+notify     = require "gulp-notify"
+uglify     = require "gulp-uglify"
+derequire  = require "gulp-derequire"
+browserify = require "browserify"
+watchify   = require "watchify"
+source     = require "vinyl-source-stream"
+buffer     = require "vinyl-buffer"
 
-{argv} = require 'yargs'
-debug = !argv.production
+handleErrors = ->
+  args = Array.prototype.slice.call arguments
+  notify.onError
+    title: "Compile Error"
+    message: "<%= error.message %>"
+  .apply @, args
+  @emit "end"
 
-gulp.task 'build', ->
-  browserify
-    entries: ['./src/prelude.coffee']
-    extensions: ['.coffee']
-    standalone: 'Prelude'
-  .transform 'coffeeify'
-  .bundle()
-  .on 'error', (err) ->
-    console.log err.message
-    @emit 'end'
-  .pipe source 'prelude.js'
-  .pipe gulpif !debug, derequire()
-  .pipe gulpif !debug, buffer()
-  .pipe gulpif !debug, uglify()
-  .pipe gulp.dest './lib'
+buildScript = (watch, debug) ->
+  option = {
+    entries: ["./src/prelude.coffee"]
+    extensions: [".coffee"]
+    standalone: "Prelude"
+    debug: debug
+  }
+  bundler =
+    if watch
+      option.cache        = {}
+      option.packageCache = {}
+      watchify(browserify(option))
+    else
+      browserify(option)
 
-gulp.task 'watch', ['build'], ->
-  gulp.watch 'src/**/*.coffee', ['build']
+  bundler.transform "coffeeify"
+
+  bundle = ->
+    bundler
+      .bundle()
+      .on "error", handleErrors
+      .pipe source "prelude.js"
+      .pipe buffer()
+      .pipe gulpif debug,  sourcemaps.init(loadMaps: true)
+      .pipe gulpif !debug, derequire()
+      .pipe gulpif !debug, uglify()
+      .pipe gulpif debug,  sourcemaps.write(".")
+      .pipe gulp.dest "./lib"
+
+  bundler.on "update", -> bundle()
+  bundle()
+
+gulp.task "build", ->
+  buildScript false, true
+
+gulp.task "build-release", ->
+  buildScript false, false
+
+gulp.task "watchify", ->
+  buildScript true, true
+
+gulp.task "watch", ["watchify"]
