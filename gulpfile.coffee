@@ -8,6 +8,9 @@ browserify = require "browserify"
 watchify   = require "watchify"
 source     = require "vinyl-source-stream"
 buffer     = require "vinyl-buffer"
+{argv}     = require "yargs"
+
+debug = !argv.production
 
 handleErrors = ->
   args = Array.prototype.slice.call arguments
@@ -17,7 +20,7 @@ handleErrors = ->
   .apply @, args
   @emit "end"
 
-buildScript = (watch, debug) ->
+buildScript = (watch) ->
   option = {
     entries: ["./src/prelude.coffee"]
     extensions: [".coffee"]
@@ -50,12 +53,9 @@ buildScript = (watch, debug) ->
   bundle()
 
 gulp.task "build", ->
-  buildScript false, true
-
-gulp.task "build-release", ->
-  buildScript false, false
+  buildScript false
 
 gulp.task "watchify", ->
-  buildScript true, true
+  buildScript true
 
 gulp.task "watch", ["watchify"]

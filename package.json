@@ -6,6 +6,7 @@
   "scripts": {
     "test": "testem",
     "build": "gulp build",
+    "build-release": "gulp build --production",
     "push": "npm run build-release; npm publish"
   },
   "repository": {
