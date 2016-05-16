@@ -1,52 +1,46 @@
-2.0
-----
-* Got rid of jQuery
-* Add ACM support
+# 2.0
 
-1.7
-----
-* Disable non-animate mode.
-* New configrations added -> auto_prepare_assets, auto_add_source, smart_preload.
-* HTML tags now can be edited.
-* Bug fixed.
+- Got rid of jQuery
+- Add ACM support
 
-1.6
-----
-* Replace javascript to coffee.
+# 1.7
 
-1.5
-----
+- Disable non-animate mode.
+- New configrations added -> auto_prepare_assets, auto_add_source, smart_preload.
+- HTML tags now can be edited.
+- Bug fixed.
 
-* Rename "jquery.precondition" to "jQuery Prelude"
+# 1.6
 
-1.4
-----
+- Replace javascript to coffee.
 
-* Rename "jquery.naz" to "jquery.precondition".
-* Use animation by default.
+# 1.5
 
-1.3
-----
+- Rename "jquery.precondition" to "jQuery Prelude"
 
-* IE6 and IE7 are supported.
-* When switch to animate mode, this version can get correct progress.
-* New option => hide_speed
-* Added new sample page!
+# 1.4
 
-1.2
-----
+- Rename "jquery.naz" to "jquery.precondition".
+- Use animation by default.
 
-* Stable release.
+# 1.3
 
-1.1
-----
+- IE6 and IE7 are supported.
+- When switch to animate mode, this version can get correct progress.
+- New option => hide_speed
+- Added new sample page!
 
-* Fixed bug when called $.fn.naz(options) not found callback method.
-* Rename prefix "nz" to "naz".
-* Prepend naz-wrapper to body.
-* new feature added. further detail at README.ja.md
+# 1.2
 
-1.0
-----
+- Stable release.
 
-* First release!
+# 1.1
+
+- Fixed bug when called $.fn.naz(options) not found callback method.
+- Rename prefix "nz" to "naz".
+- Prepend naz-wrapper to body.
+- new feature added. further detail at README.ja.md
+
+# 1.0
+
+- First release!

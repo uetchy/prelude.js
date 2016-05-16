@@ -4,7 +4,7 @@ prelude.js is a simple and flexible preloader works with CommonJS, AMD and `<scr
 
 # Requirements
 
-* Nothing
+- Nothing
 
 # Installation
 
@@ -20,10 +20,10 @@ $ bower install --save prelude-js
 
 # How to Use
 
-```js
+```javascript
 <script src="/path/to/prelude.js"></script>
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     var loader = new Prelude();
     loader.add([
       { from: '/images/picture.jpg' },
@@ -37,8 +37,7 @@ $ bower install --save prelude-js
 </script>
 ```
 
-Prelude also supports CommonJS, AMD -style including options.
-This is more modern way:
+Prelude also supports CommonJS, AMD style including options. This is more modern way:
 
 ```coffee
 domready = require 'domready'
@@ -60,6 +59,6 @@ This is open-source project. Feel free to open new issue!
 
 # Credits
 
-Maintained by Yasuaki Uechi <uetchy@randompaper.co>
+Maintained by [Yasuaki Uechi](https://randompaper.co)
 
 Licensed under MIT License

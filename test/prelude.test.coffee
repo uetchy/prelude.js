@@ -1,7 +1,7 @@
 {expect} = require 'chai'
-path     = require 'path'
+path = require 'path'
 
-Loader   = require '../lib/prelude'
+Loader = require '../lib/prelude'
 
 describe 'prelude', ->
   it 'can preload images', (done) ->
