@@ -4,19 +4,13 @@
   "description": "The simple image preloader",
   "main": "lib/prelude.js",
   "scripts": {
-    "test": "testem",
-    "build": "gulp build",
-    "build-release": "gulp build --production",
-    "push": "npm run build-release; npm publish"
+    "test": "testem"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/uetchy/prelude.js.git"
   },
-  "keywords": [
-    "preloader",
-    "loading"
-  ],
+  "keywords": ["preloader", "loading"],
   "author": "Yasuaki Uechi",
   "license": "MIT",
   "bugs": {
@@ -24,21 +18,8 @@
   },
   "homepage": "https://github.com/uetchy.js/prelude",
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "chai": "^3.5.0",
-    "coffee-script": "^1.9.2",
-    "coffeeify": "^2.0.1",
-    "gulp": "^3.8.11",
-    "gulp-derequire": "^2.1.0",
-    "gulp-if": "^2.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
-    "mocha": "^2.2.4",
-    "testem": "^1.7.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.1",
-    "yargs": "^4.7.0"
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "testem": "^2.2.1"
   }
 }

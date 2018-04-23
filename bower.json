@@ -2,21 +2,10 @@
   "name": "prelude-js",
   "version": "2.0.0",
   "homepage": "https://github.com/uetchy/prelude.js",
-  "authors": [
-    "Yasuaki Uechi <uetchy@randompaper.co>"
-  ],
+  "authors": ["Yasuaki Uechi <uetchy@randompaper.co>"],
   "description": "The simple asset preloader",
   "main": "lib/prelude.js",
-  "keywords": [
-    "preloader",
-    "loading"
-  ],
+  "keywords": ["preloader", "loading"],
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"]
 }
