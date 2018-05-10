@@ -10,7 +10,10 @@
     "type": "git",
     "url": "https://github.com/uetchy/prelude.js.git"
   },
-  "keywords": ["preloader", "loading"],
+  "keywords": [
+    "preloader",
+    "loading"
+  ],
   "author": "Yasuaki Uechi",
   "license": "MIT",
   "bugs": {
