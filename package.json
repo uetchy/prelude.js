@@ -1,28 +1,35 @@
 {
   "name": "prelude-js",
-  "version": "2.0.0",
   "description": "The simple image preloader",
+  "version": "2.0.0",
+  "author": "Yasuaki Uechi <y@uechi.io>",
   "main": "lib/prelude.js",
   "scripts": {
+    "build": "babel src -d lib",
     "test": "testem"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/uetchy/prelude.js.git"
-  },
-  "keywords": [
-    "preloader",
-    "loading"
-  ],
-  "author": "Yasuaki Uechi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uetchy/prelude.js/issues"
-  },
-  "homepage": "https://github.com/uetchy.js/prelude",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "chai": "^4.1.2",
     "mocha": "^5.1.1",
     "testem": "^2.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/uetchy/prelude.js/issues"
+  },
+  "files": [
+    "src"
+  ],
+  "homepage": "https://github.com/uetchy.js/prelude",
+  "keywords": [
+    "loading",
+    "preloader"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uetchy/prelude.js.git"
   }
 }

@@ -4,7 +4,7 @@ prelude.js is a simple and flexible preloader works with CommonJS, AMD and `<scr
 
 # Requirements
 
-* Nothing
+- Nothing
 
 # Installation
 
@@ -24,16 +24,16 @@ $ bower install --save prelude-js
 <script src="/path/to/prelude.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const loader = new Prelude();
+    const loader = new Prelude()
     loader.add([
       { from: '/images/picture.jpg' },
-      { from: 'http://example.com/sample.png' }
-    ]);
+      { from: 'http://example.com/sample.png' },
+    ])
     loader.on('end', result => {
-      document.body.appendChild( result.get('picture') )
-      document.body.appendChild( result.get('sample') )
-    });
-  });
+      document.body.appendChild(result.get('picture'))
+      document.body.appendChild(result.get('sample'))
+    })
+  })
 </script>
 ```
 
